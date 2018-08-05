@@ -12,7 +12,10 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  /*
+   * 1. Get mesurments and send to IOT HUB
+   * 2. SCAN BT and send to IOT HUB
+  */
 
 }
 

@@ -135,6 +135,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 /**********************************************/
 /****************** Main **********************/
 /**********************************************/
+
 //Based on command_center example:
 void command_center_run(void)
 {

@@ -3,10 +3,6 @@ extern "C"{
 #include "ThermAlarm.h"
 };
 
-
-
-
-
 int status = WL_IDLE_STATUS;
 static int messageCount = 1;
 static bool messagePending = false;
@@ -20,7 +16,6 @@ void setup() {
   initHW();
   
   iotHubClientHandle = createIOThubClient();
-
 }
 
 void loop() {
@@ -39,8 +34,6 @@ void loop() {
     }
     IoTHubClient_LL_DoWork(iotHubClientHandle);
     delay(10);
- 
-
 }
 
 
@@ -99,6 +92,8 @@ void initTime()
 void initHW(){
   pinMode(PIR_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
+
+  digitalWrite(LED_PIN, HIGH);
 }
 
 //void destroy(){

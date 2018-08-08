@@ -24,21 +24,21 @@ END_NAMESPACE(ThermAlarmNS);
 EXECUTE_COMMAND_RESULT Arm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  ARMED;
-  printf("Arm!!"); //DEBUG (serial.println is cpp obj)
+  LogInfo("Arm!!"); //DEBUG (serial.println is cpp obj)
   return EXECUTE_COMMAND_SUCCESS;
 }
 
 EXECUTE_COMMAND_RESULT Disarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  DISARMED;
-  printf("Disarm!!"); //DEBUG
+  LogInfo("Disarm!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }
 
 EXECUTE_COMMAND_RESULT TurnOnAlarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  ALARM;
-  printf("BUZZZ!!!!!!!"); //DEBUG
+  LogInfo("BUZZZ!!!!!!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }
 

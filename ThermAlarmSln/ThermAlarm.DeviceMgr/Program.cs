@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices;
 using Newtonsoft.Json;
+using ThermAlarm.Common;
 
 
 namespace ThermAlarm.DeviceMgr
@@ -12,34 +13,34 @@ namespace ThermAlarm.DeviceMgr
     {
         static async Task Main(string[] args)
         {
-            var serviceConnectionString = "HostName=IOThubLightTry.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=RAu/c4xbo/h081Y3yil0/M+cK/1uJr6cfhpPwNbYJys=";
-            var serviceClient = ServiceClient.CreateFromConnectionString(serviceConnectionString);
-
+            //init
+            string serviceConnectionString = Configs.serviceConnectionString;
+            ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(serviceConnectionString);
             var registryManager = RegistryManager.CreateFromConnectionString(serviceConnectionString);
-
             var feedbackTask = ReceiveFeedback(serviceClient);
 
-            while (true)
-            {
-                Console.WriteLine("Which device do you wish to send a message to? ");
-                Console.Write("> ");
-                var deviceId = Console.ReadLine();
+            await CallDeviceAction("LightTry1", eDeviceAction.Arm, serviceClient);
+            await CallDeviceAction("LightTry1", eDeviceAction.Disarm, serviceClient);
+            await CallDeviceAction("LightTry1", eDeviceAction.Alarm, serviceClient);
 
-                await SendCloudToDeviceMessage(serviceClient, deviceId);
-                //await CallDirectMethod(serviceClient, deviceId);
-                //await UpdateDeviceFirmware(registryManager, deviceId);
-            }
+
+        }
+
+        public static async Task CallDeviceAction(string deviceId, eDeviceAction action, ServiceClient serviceClient)
+        {
+            
+            //msg C2D to activate action:
+            deviceAction act = new deviceAction(action.ToString(), null);
+            string Payload = JsonConvert.SerializeObject(act);//, Formatting.Indented);
+            await SendCloudToDeviceMessage(serviceClient, deviceId, Payload);
+
         }
 
         private static async Task SendCloudToDeviceMessage(
             ServiceClient serviceClient,
-            string deviceId)
+            string deviceId,
+            string payload)
         {
-            Console.WriteLine("What message payload do you want to send? ");
-            Console.Write("> ");
-
-            var payload = Console.ReadLine();
-
             var commandMessage = new Message(Encoding.ASCII.GetBytes(payload));
             commandMessage.MessageId = Guid.NewGuid().ToString();
             commandMessage.Ack = DeliveryAcknowledgement.Full;
@@ -74,57 +75,24 @@ namespace ThermAlarm.DeviceMgr
             }
         }
 
-        //private static async Task CallDirectMethod(
-        //    ServiceClient serviceClient,
-        //    string deviceId)
-        //{
-        //    var method = new CloudToDeviceMethod("showMessage");
-        //    method.SetPayloadJson("'Hello from C#'");
+    }
 
-        //    var response = await serviceClient.InvokeDeviceMethodAsync(deviceId, method);
-
-        //    Console.WriteLine($"Response status: {response.Status}, payload: {response.GetPayloadAsJson()}");
-
-        //}
-
-        //private static async Task UpdateDeviceFirmware(
-        //    RegistryManager registryManager,
-        //    string deviceId)
-        //{
-        //    var deviceTwin = await registryManager.GetTwinAsync(deviceId);
-
-        //    var twinPatch = new
-        //    {
-        //        properties = new
-        //        {
-        //            desired = new
-        //            {
-        //                firmwareVersion = "2.0"
-        //            }
-        //        }
-        //    };
-
-        //    var twinPatchJson = JsonConvert.SerializeObject(twinPatch);
-
-        //    await registryManager.UpdateTwinAsync(deviceId, twinPatchJson, deviceTwin.ETag);
-
-        //    Console.WriteLine($"Firmware update sent to device '{deviceId}'...");
-
-        //    while (true)
-        //    {
-        //        Thread.Sleep(1000);
-
-        //        deviceTwin = await registryManager.GetTwinAsync(deviceId);
-
-        //        Console.WriteLine($"Firmware update status: {deviceTwin.Properties.Reported["firmwareUpdateStatus"]}");
-
-        //        if (deviceTwin.Properties.Reported["firmwareVersion"] == "2.0")
-        //        {
-        //            Console.WriteLine("Firmware update complete!");
-        //            break;
-
-        //        }
-        //    }
-        //}
+    public class deviceAction
+    {
+        public string Name;
+        public String Parameters;
+        public deviceAction(string Name, String parameters)
+        {
+            this.Name = Name;
+            if (this.Parameters==null)
+            {
+                this.Parameters = "{}";
+            }
+            else
+            {
+                this.Parameters = parameters;
+            }
+            
+        }
     }
 }

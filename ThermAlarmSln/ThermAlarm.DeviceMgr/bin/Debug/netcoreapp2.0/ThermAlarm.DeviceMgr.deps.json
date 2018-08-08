@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v2.0": {
       "ThermAlarm.DeviceMgr/1.0.0": {
         "dependencies": {
-          "Microsoft.Azure.Devices": "1.16.1"
+          "Microsoft.Azure.Devices": "1.16.1",
+          "ThermAlarm.Common": "1.0.0"
         },
         "runtime": {
           "ThermAlarm.DeviceMgr.dll": {}
@@ -696,6 +697,11 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "ThermAlarm.Common/1.0.0": {
+        "runtime": {
+          "ThermAlarm.Common.dll": {}
+        }
       }
     }
   },
@@ -1145,6 +1151,11 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "ThermAlarm.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

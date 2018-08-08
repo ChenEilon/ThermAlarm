@@ -58,6 +58,9 @@ namespace ThermAlarm.EventProcessor
                     case msgType.BTscan:
                         Console.WriteLine($"Got BT scan msg from device ID: '{deviceId}'");
                         break;
+                    case msgType.MeasurementsAndBT:
+                        Console.WriteLine($"Got Measurement and BT scan msg from device ID: '{deviceId}'");
+                        break;
                     default:
                         Console.WriteLine("ERROR - message is of unknown Type");
                         break;

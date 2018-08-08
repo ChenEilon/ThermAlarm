@@ -15,4 +15,3 @@ C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\D
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.AssemblyInfo.cs
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.dll
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.csprojAssemblyReference.cache

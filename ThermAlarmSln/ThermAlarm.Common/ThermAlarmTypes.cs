@@ -7,10 +7,11 @@ namespace ThermAlarm.Common
     public enum msgType
     {
         Meausurements = 0,
-        BTscan = 1
+        BTscan = 1,
+        MeasurementsAndBT = 2
     }
 
-    public enum deviceAction
+    public enum eDeviceAction
     {
         Arm = 0,
         Disarm = 1,

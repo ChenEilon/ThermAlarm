@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.Azure.Devices" Version="1.16.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ThermAlarm.Common\ThermAlarm.Common.csproj" />
+  </ItemGroup>
+
 </Project>

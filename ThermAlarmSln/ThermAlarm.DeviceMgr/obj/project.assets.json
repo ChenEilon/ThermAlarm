@@ -1259,6 +1259,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "ThermAlarm.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ThermAlarm.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ThermAlarm.Common.dll": {}
+        }
       }
     }
   },
@@ -4778,12 +4788,18 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "ThermAlarm.Common/1.0.0": {
+      "type": "project",
+      "path": "../ThermAlarm.Common/ThermAlarm.Common.csproj",
+      "msbuildProject": "../ThermAlarm.Common/ThermAlarm.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.Azure.Devices >= 1.16.1",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "ThermAlarm.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4815,7 +4831,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\DELL1\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj": {
+              "projectPath": "C:\\Users\\DELL1\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

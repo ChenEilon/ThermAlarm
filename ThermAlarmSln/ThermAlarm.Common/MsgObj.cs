@@ -10,7 +10,7 @@ namespace ThermAlarm.Common
 
         public int pirValue { get; set; }
 
-        public int[] thermValue { get; set; }
+        public float[] thermValue { get; set; }
 
         public string[] idsBTScan { get; set; }
 

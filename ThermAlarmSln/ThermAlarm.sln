@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.Common", "ThermA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.DeviceMgr", "ThermAlarm.DeviceMgr\ThermAlarm.DeviceMgr.csproj", "{F4453D3C-5C17-4D06-8EDE-2836C412B640}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.FrontEnd.WebApp", "..\..\..\Visual Studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\ThermAlarm.FrontEnd.WebApp.csproj", "{30DD2005-C510-48BB-8557-7E26F6FA2A87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.BackEnd.API", "ThermAlarm.BackEnd.API\ThermAlarm.BackEnd.API.csproj", "{C98BF320-8161-4905-8D1C-56C77C3D972B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.BackEnd.API", "..\..\..\Visual Studio 2017\Projects\ThermAlarm\APIApp\ThermAlarm.BackEnd.API.csproj", "{5E0B049F-6FBF-4934-A250-687A54F339DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.FrontEnd.WebApp", "ThermAlarm.FrontEnd.WebApp\ThermAlarm.FrontEnd.WebApp.csproj", "{FE2451E2-80A6-458E-A766-2823853A3815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30DD2005-C510-48BB-8557-7E26F6FA2A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30DD2005-C510-48BB-8557-7E26F6FA2A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30DD2005-C510-48BB-8557-7E26F6FA2A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30DD2005-C510-48BB-8557-7E26F6FA2A87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E0B049F-6FBF-4934-A250-687A54F339DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E0B049F-6FBF-4934-A250-687A54F339DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E0B049F-6FBF-4934-A250-687A54F339DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E0B049F-6FBF-4934-A250-687A54F339DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98BF320-8161-4905-8D1C-56C77C3D972B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98BF320-8161-4905-8D1C-56C77C3D972B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98BF320-8161-4905-8D1C-56C77C3D972B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98BF320-8161-4905-8D1C-56C77C3D972B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2451E2-80A6-458E-A766-2823853A3815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2451E2-80A6-458E-A766-2823853A3815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2451E2-80A6-458E-A766-2823853A3815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2451E2-80A6-458E-A766-2823853A3815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,12 @@
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\bin\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.deps.json
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\bin\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.runtimeconfig.json
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\bin\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.runtimeconfig.dev.json
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\bin\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.dll
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\bin\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.pdb
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.csprojAssemblyReference.cache
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.csproj.CoreCompileInputs.cache
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.AssemblyInfoInputs.cache
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.AssemblyInfo.cs
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.dll
+c:\users\sapira\documents\visual studio 2017\Projects\ThermAlarm\ThermAlarm-FrontEnd-WebApp\obj\Release\netcoreapp2.0\ThermAlarm-FrontEnd-WebApp.pdb

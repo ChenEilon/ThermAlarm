@@ -15,3 +15,11 @@ C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\D
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.AssemblyInfo.cs
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.dll
 C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\bin\Debug\netcoreapp2.0\ThermAlarm.Common.deps.json
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\bin\Debug\netcoreapp2.0\ThermAlarm.Common.dll
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\bin\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.csproj.CoreCompileInputs.cache
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.AssemblyInfoInputs.cache
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.AssemblyInfo.cs
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.dll
+C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.Common\obj\Debug\netcoreapp2.0\ThermAlarm.Common.pdb

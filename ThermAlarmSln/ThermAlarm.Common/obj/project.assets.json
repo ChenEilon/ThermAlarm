@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL1\\.nuget\\packages\\": {},
+    "C:\\Users\\SAPIRA\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL1\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj",
+      "projectUniqueName": "C:\\Users\\SAPIRA\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj",
       "projectName": "ThermAlarm.Common",
-      "projectPath": "C:\\Users\\DELL1\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj",
-      "packagesPath": "C:\\Users\\DELL1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL1\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\obj\\",
+      "projectPath": "C:\\Users\\SAPIRA\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\ThermAlarm.Common.csproj",
+      "packagesPath": "C:\\Users\\SAPIRA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SAPIRA\\Documents\\GitHub\\ThermAlarm\\ThermAlarmSln\\ThermAlarm.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DELL1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SAPIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

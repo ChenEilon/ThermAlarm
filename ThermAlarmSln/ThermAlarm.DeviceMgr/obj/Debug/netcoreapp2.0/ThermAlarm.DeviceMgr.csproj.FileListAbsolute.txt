@@ -1,0 +1,14 @@
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.deps.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.runtimeconfig.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.runtimeconfig.dev.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.csproj.CoreCompileInputs.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.AssemblyInfoInputs.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.AssemblyInfo.cs
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.csprojAssemblyReference.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.Common.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\bin\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.DeviceMgr\obj\Debug\netcoreapp2.0\ThermAlarm.DeviceMgr.csproj.CopyComplete

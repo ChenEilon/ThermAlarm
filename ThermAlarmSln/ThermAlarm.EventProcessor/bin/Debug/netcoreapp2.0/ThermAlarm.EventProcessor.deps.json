@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "8e9fa4d6f9876f3d6a3baa428b0070e24fd9eddd"
+    "signature": "3ab17c6177dc4e89991a523b91252939df89e7de"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "ThermAlarm.EventProcessor/1.0.0": {
         "dependencies": {
+          "Microsoft.Azure.Devices": "1.16.1",
           "Microsoft.Azure.EventHubs.Processor": "2.1.0",
           "ThermAlarm.Common": "1.0.0"
         },
@@ -15,7 +16,7 @@
           "ThermAlarm.EventProcessor.dll": {}
         }
       },
-      "Microsoft.Azure.Amqp/2.3.0": {
+      "Microsoft.Azure.Amqp/2.3.2": {
         "dependencies": {
           "System.Net.WebSockets.Client": "4.0.2",
           "System.Runtime.Serialization.Primitives": "4.3.0"
@@ -24,9 +25,27 @@
           "lib/netstandard1.3/Microsoft.Azure.Amqp.dll": {}
         }
       },
+      "Microsoft.Azure.Devices/1.16.1": {
+        "dependencies": {
+          "Microsoft.Azure.Amqp": "2.3.2",
+          "Microsoft.Azure.Devices.Shared": "1.15.1",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Devices.dll": {}
+        }
+      },
+      "Microsoft.Azure.Devices.Shared/1.15.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Devices.Shared.dll": {}
+        }
+      },
       "Microsoft.Azure.EventHubs/2.1.0": {
         "dependencies": {
-          "Microsoft.Azure.Amqp": "2.3.0",
+          "Microsoft.Azure.Amqp": "2.3.2",
           "Microsoft.Azure.Services.AppAuthentication": "1.0.1",
           "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.19.6",
           "System.Diagnostics.DiagnosticSource": "4.5.0",
@@ -1133,12 +1152,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Azure.Amqp/2.3.0": {
+    "Microsoft.Azure.Amqp/2.3.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0Tj+THewpBtT+B9vblBXM9AfK6R0iKTGl4Yvl8fSzEtqU9eplZhJX/fkd3LctE1t+7R1V5VSwIZumgd0iMaG3w==",
-      "path": "microsoft.azure.amqp/2.3.0",
-      "hashPath": "microsoft.azure.amqp.2.3.0.nupkg.sha512"
+      "sha512": "sha512-xpGUXzu4gI4LdPRn1o2pUIKW7Zm8A/D1GimVADocbodrw1bysC/FvQU1jm3SLm9hD4t83Sc0Nb8SK9ns7r22GA==",
+      "path": "microsoft.azure.amqp/2.3.2",
+      "hashPath": "microsoft.azure.amqp.2.3.2.nupkg.sha512"
+    },
+    "Microsoft.Azure.Devices/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gIv1l7CqHjP/pLMk0gzktz6ZgvIN2pNm5sbbHP8L+kVvNIN51NGQEYhgSi+L3zz+et9Y78WAeGIuCRy8/zcj/Q==",
+      "path": "microsoft.azure.devices/1.16.1",
+      "hashPath": "microsoft.azure.devices.1.16.1.nupkg.sha512"
+    },
+    "Microsoft.Azure.Devices.Shared/1.15.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D9ga+hia7halbuFVLi8icirPmOUG9/yLR3bQRMcr3HjLmwAW4slT3Bp7XaKEaJYFAWBAf9ubeZb6zhG32lMFIg==",
+      "path": "microsoft.azure.devices.shared/1.15.1",
+      "hashPath": "microsoft.azure.devices.shared.1.15.1.nupkg.sha512"
     },
     "Microsoft.Azure.EventHubs/2.1.0": {
       "type": "package",

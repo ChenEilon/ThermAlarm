@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermAlarm.EventProcessor", "ThermAlarm.EventProcessor\ThermAlarm.EventProcessor.csproj", "{30D9B6CD-6552-4D7E-AA9E-6EDADCAB0393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.EventProcessor", "ThermAlarm.EventProcessor\ThermAlarm.EventProcessor.csproj", "{30D9B6CD-6552-4D7E-AA9E-6EDADCAB0393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermAlarm.Common", "ThermAlarm.Common\ThermAlarm.Common.csproj", "{7BC91EE0-785E-467E-8FDD-F6352F402439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermAlarm.Common", "ThermAlarm.Common\ThermAlarm.Common.csproj", "{7BC91EE0-785E-467E-8FDD-F6352F402439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermAlarm.DeviceMgr", "ThermAlarm.DeviceMgr\ThermAlarm.DeviceMgr.csproj", "{F4453D3C-5C17-4D06-8EDE-2836C412B640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7BC91EE0-785E-467E-8FDD-F6352F402439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC91EE0-785E-467E-8FDD-F6352F402439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC91EE0-785E-467E-8FDD-F6352F402439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4453D3C-5C17-4D06-8EDE-2836C412B640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

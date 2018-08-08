@@ -6,7 +6,7 @@ namespace ThermAlarm.Common
 {
     public enum msgType
     {
-        Meausurements,
-        BTscan
+        Meausurements = 0,
+        BTscan = 1
     }
 }

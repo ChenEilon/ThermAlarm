@@ -9,7 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Text;
-using ThermAlarm.BackEnd.API;
+//using ThermAlarm.BackEnd.API;
+using ThermAlarm.Common;
 
 namespace ThermAlarm.BackEnd.API
 {

@@ -20,3 +20,17 @@ C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.AssemblyInfo.cs
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.dll
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.csproj.CoreCompileInputs.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.AssemblyInfoInputs.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.AssemblyInfo.cs
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.csprojAssemblyReference.cache
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.deps.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.runtimeconfig.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.runtimeconfig.dev.json
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.Common.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\bin\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.csproj.CopyComplete
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.dll
+C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.BackEnd.API\obj\Debug\netcoreapp2.0\ThermAlarm.BackEnd.API.pdb

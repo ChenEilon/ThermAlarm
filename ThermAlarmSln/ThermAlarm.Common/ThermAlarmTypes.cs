@@ -9,4 +9,11 @@ namespace ThermAlarm.Common
         Meausurements = 0,
         BTscan = 1
     }
+
+    public enum deviceAction
+    {
+        Arm = 0,
+        Disarm = 1,
+        Alarm = 2
+    }
 }

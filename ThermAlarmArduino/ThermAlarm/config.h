@@ -40,15 +40,17 @@ typedef enum _eThermAlarmStatus {
   DISARMED,
   ARMED,
   ALARM
-}eThermAlarmStatus;
+} eThermAlarmStatus;
 
 #define LED_PIN 0 //TODO - change base on hardware
 #define PIR_PIN 14
-//#define TX_PIN 1
-//#define RX_PIN 3
+#define RX_PIN 12
+#define TX_PIN 13
 //#define BUZZER_PIN
 
 #define THERMAL_ARRAY_SIZE 64
+#define BT_DATA_BAUD_RATE 9600
+#define BT_BUFFER_LEN 64
 
 #endif /* CONFIG_H */
 

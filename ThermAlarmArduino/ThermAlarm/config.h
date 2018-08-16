@@ -27,8 +27,8 @@
 #define IOT_CONFIG_MQTT                 // uncomment this line for MQTT
 // #define IOT_CONFIG_HTTP              // uncomment this line for HTTP
 
-#define MESSAGE_MAX_LEN 256
-#define DEBUG_SEC 500
+#define MESSAGE_MAX_LEN 1024
+#define DEBUG_SEC 2000
 #define DEVICE_ID "LightTry1" //TODO - fill device id.
 
 /**********************************************/
@@ -44,11 +44,11 @@ typedef enum _eThermAlarmStatus {
 
 #define LED_PIN 0 //TODO - change base on hardware
 #define PIR_PIN 14
-//#define THERM_PIN 
-//#define BT_PIN
+//#define TX_PIN 1
+//#define RX_PIN 3
 //#define BUZZER_PIN
 
-
+#define THERMAL_ARRAY_SIZE 64
 
 #endif /* CONFIG_H */
 

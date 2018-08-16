@@ -26,17 +26,3 @@ C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProces
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.csproj.CopyComplete
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.dll
 C:\Users\SAPIRA\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.pdb
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.csproj.CoreCompileInputs.cache
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.AssemblyInfoInputs.cache
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.AssemblyInfo.cs
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.csprojAssemblyReference.cache
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.deps.json
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.runtimeconfig.json
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.runtimeconfig.dev.json
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.dll
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.pdb
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.Common.dll
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\bin\Debug\netcoreapp2.0\ThermAlarm.Common.pdb
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.csproj.CopyComplete
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.dll
-C:\Users\DELL1\Documents\GitHub\ThermAlarm\ThermAlarmSln\ThermAlarm.EventProcessor\obj\Debug\netcoreapp2.0\ThermAlarm.EventProcessor.pdb

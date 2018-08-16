@@ -1,34 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ThermAlarm.Common;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Devices;
 using Newtonsoft.Json;
-using ThermAlarm.Common;
 
 
-namespace ThermAlarm.DeviceMgr
+namespace ThermAlarm.WebApp
 {
-    class Program
+    public static class DeviceMgr
     {
-        static async Task Main(string[] args)
-        {
-            //init
-            string serviceConnectionString = Configs.serviceConnectionString;
-            ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(serviceConnectionString);
-            var registryManager = RegistryManager.CreateFromConnectionString(serviceConnectionString);
-            var feedbackTask = ReceiveFeedback(serviceClient);
 
-            await CallDeviceAction("LightTry1", eDeviceAction.Arm, serviceClient);
-            await CallDeviceAction("LightTry1", eDeviceAction.Disarm, serviceClient);
-            await CallDeviceAction("LightTry1", eDeviceAction.Alarm, serviceClient);
-
-
-        }
+        //await CallDeviceAction("LightTry1", eDeviceAction.Arm, serviceClient);
+        //await CallDeviceAction("LightTry1", eDeviceAction.Disarm, serviceClient);
+        //await CallDeviceAction("LightTry1", eDeviceAction.Alarm, serviceClient);
 
         public static async Task CallDeviceAction(string deviceId, eDeviceAction action, ServiceClient serviceClient)
         {
-            
+
             //msg C2D to activate action:
             deviceAction act = new deviceAction(action.ToString(), null);
             string Payload = JsonConvert.SerializeObject(act);//, Formatting.Indented);
@@ -49,7 +41,7 @@ namespace ThermAlarm.DeviceMgr
             await serviceClient.SendAsync(deviceId, commandMessage);
         }
 
-        private static async Task ReceiveFeedback(ServiceClient serviceClient)
+        public static async Task ReceiveFeedback(ServiceClient serviceClient)
         {
             var feedbackReceiver = serviceClient.GetFeedbackReceiver();
 
@@ -73,26 +65,6 @@ namespace ThermAlarm.DeviceMgr
 
                 await feedbackReceiver.CompleteAsync(feedbackBatch);
             }
-        }
-
-    }
-
-    public class deviceAction
-    {
-        public string Name;
-        public String Parameters;
-        public deviceAction(string Name, String parameters)
-        {
-            this.Name = Name;
-            if (this.Parameters==null)
-            {
-                this.Parameters = "{}";
-            }
-            else
-            {
-                this.Parameters = parameters;
-            }
-            
         }
     }
 }

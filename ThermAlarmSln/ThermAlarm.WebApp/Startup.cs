@@ -42,8 +42,10 @@ namespace ThermAlarm.WebApp
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{Controller}/{action}/{id?}",
+                    new { controller = "Home", Action = "Index" }
+                    );
             });
         }
     }

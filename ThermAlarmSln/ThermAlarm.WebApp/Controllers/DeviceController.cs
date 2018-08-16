@@ -5,49 +5,57 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using ThermAlarm.Common;
+using System.Text;
+using System.Threading;
+using Microsoft.Azure.Devices;
+using Newtonsoft.Json;
+
 namespace ThermAlarm.WebApp.Controllers
 {
     //[Produces("application/json")]
-    [Route("api/[Controller]")]
+    [Route("[Controller]/[action]")]
     public class DeviceController : Controller
     {
-        // GET: api/Device
+        string serviceConnectionString;
+        ServiceClient serviceClient;
+        RegistryManager registryManager;
+
+        public DeviceController()
+        {
+            //init DeviceMgr
+            serviceConnectionString = Configs.serviceConnectionString;
+            serviceClient = ServiceClient.CreateFromConnectionString(serviceConnectionString);
+            registryManager = RegistryManager.CreateFromConnectionString(serviceConnectionString);
+            //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
+            //DeviceMgr.ReceiveFeedback(serviceClient);
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Arm()
         {
-            return new string[] { "value1", "value2" };
+            /*This function calls the action Arm on the device.
+             The function does not get a feedback*/
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Arm, serviceClient).Wait();
+            return Ok("Arm Command was sent to Device Device!"); // TODO - change to logger
         }
 
-        // GET: api/Device/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // GET: api/Device/5
         [HttpGet]
-        public string Hello()
+        public IActionResult Disarm()
         {
-            return "Hiiiiii!!";
+            /*This function calls the action Disarm on the device.
+             The function does not get a feedback*/
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Disarm, serviceClient).Wait();
+            return Ok("Disarm Command was sent to Device Device!"); // TODO - change to logger
         }
 
-        // POST: api/Device
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpGet]
+        public IActionResult Alarm()
         {
-        }
-        
-        // PUT: api/Device/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            /*This function calls the action ALARM on the device.
+             The function does not get a feedback*/
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Alarm, serviceClient).Wait();
+            return Ok("ALARM!! Command was sent to Device Device! BUZZZZZZ"); // TODO - change to logger
         }
     }
 }

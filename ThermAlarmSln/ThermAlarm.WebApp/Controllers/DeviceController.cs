@@ -17,16 +17,14 @@ namespace ThermAlarm.WebApp.Controllers
     [Route("[Controller]/[action]")]
     public class DeviceController : Controller
     {
-        string serviceConnectionString;
         ServiceClient serviceClient;
         RegistryManager registryManager;
 
         public DeviceController()
         {
             //init DeviceMgr
-            serviceConnectionString = Configs.serviceConnectionString;
-            serviceClient = ServiceClient.CreateFromConnectionString(serviceConnectionString);
-            registryManager = RegistryManager.CreateFromConnectionString(serviceConnectionString);
+            serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
+            registryManager = RegistryManager.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
             //DeviceMgr.ReceiveFeedback(serviceClient);
         }

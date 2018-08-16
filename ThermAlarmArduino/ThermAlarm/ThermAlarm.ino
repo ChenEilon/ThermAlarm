@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <SparkFun_GridEYE_Arduino_Library.h>
+#include <SoftwareSerial.h>
 extern "C"{
 #include "ThermAlarm.h"
 };
@@ -11,6 +12,7 @@ static bool messageSending = true;
 static IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle;
 
 GridEYE grideye;
+SoftwareSerial btSerial(RX_PIN, TX_PIN);
 
 void setup() {
   initSerial();
@@ -100,6 +102,8 @@ void initHW(){
 
   Wire.begin();
   grideye.begin();
+
+  btSerial.begin(BT_DATA_BAUD_RATE);
 
   digitalWrite(LED_PIN, HIGH);
 }

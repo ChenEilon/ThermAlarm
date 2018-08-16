@@ -18,3 +18,34 @@ float* getThermData() {
   return thermData;
 }
 
+char* getBtData(char *buf, int buf_len) {
+  char *prefix = "+INQ:";
+  char suffix = ',';
+  int i = 0;
+  char c;
+  int state = 0;
+  while (btSerial.available() and i < buf_len - 1) {
+    c = btSerial.read();
+    switch (state) {
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        if (c == prefix[state])
+          state++;
+        else
+          state = 0;
+        break;
+      case 5:
+        buf[i] = c;
+        i++;
+        if (c == suffix)
+          state = 0;
+        break;
+    }
+  }
+  buf[i] = '\0';
+  return buf;
+}
+

@@ -8,6 +8,8 @@
 void readMessage(int messageId, char *payload) {
   uint8_t pirValue = getPirData();
   float *thermData = getThermData();
+//  char buf[BT_BUFFER_LEN];
+//  char *btData = getBtData(buf, BT_BUFFER_LEN);
   
   StaticJsonBuffer<MESSAGE_MAX_LEN> jsonBuffer;
   JsonObject &root = jsonBuffer.createObject();
@@ -20,6 +22,7 @@ void readMessage(int messageId, char *payload) {
   for (int i = 0; i < THERMAL_ARRAY_SIZE; i++) {
     thermValue.add(thermData[i]);
   }
+//  root["idsBTScan"] = btData;
   
   root.printTo(payload, MESSAGE_MAX_LEN);
 }

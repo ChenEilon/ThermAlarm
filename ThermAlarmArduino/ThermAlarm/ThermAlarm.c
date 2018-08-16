@@ -44,23 +44,6 @@ EXECUTE_COMMAND_RESULT TurnOnAlarm(mThermAlarm* device){
 
 
 /**********************************************/
-/****************** Sensors *******************/
-/**********************************************/
-
-uint8_t get_PIR_data(void) { //EXAMPLE INCLUDES MORE COMPLEX PIR VALUE DEFINITION
-   uint8_t pir_status = digitalRead(PIR_PIN);
-   //uint8_t pir_status = HIGH; //TODO - switch with upper row
-   if(pir_status == HIGH) {
-      printf("PIR - Motion detected.\n");//DEBUG
-   }
-   if(pir_status == LOW) {
-      printf("PIR - Motion ended.\n"); //DEBUG
-   }
-   return pir_status;
-}
-
-
-/**********************************************/
 /****************** IOT **********************/
 /**********************************************/
 

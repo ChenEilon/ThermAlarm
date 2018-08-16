@@ -1,4 +1,5 @@
 #include <ESP8266WiFi.h>
+#include <SparkFun_GridEYE_Arduino_Library.h>
 extern "C"{
 #include "ThermAlarm.h"
 };
@@ -8,6 +9,8 @@ static int messageCount = 1;
 static bool messagePending = false;
 static bool messageSending = true;
 static IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle;
+
+GridEYE grideye;
 
 void setup() {
   initSerial();
@@ -26,11 +29,13 @@ void loop() {
 
   if (!messagePending && messageSending)
     {
-        char messagePayload[MESSAGE_MAX_LEN];
-        readMessage(messageCount, messagePayload);
-        sendMessage(iotHubClientHandle, messagePayload);
-        messageCount++;
-        delay(DEBUG_SEC);
+      digitalWrite(LED_PIN, LOW);
+      char messagePayload[MESSAGE_MAX_LEN];
+      readMessage(messageCount, messagePayload);
+      sendMessage(iotHubClientHandle, messagePayload);
+      messageCount++;
+      digitalWrite(LED_PIN, HIGH);
+      delay(DEBUG_SEC);
     }
     IoTHubClient_LL_DoWork(iotHubClientHandle);
     delay(10);
@@ -92,6 +97,9 @@ void initTime()
 void initHW(){
   pinMode(PIR_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
+
+  Wire.begin();
+  grideye.begin();
 
   digitalWrite(LED_PIN, HIGH);
 }

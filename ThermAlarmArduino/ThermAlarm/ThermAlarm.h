@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-uint8_t get_PIR_data(void);
+uint8_t getPirData(void);
 
 IOTHUB_CLIENT_LL_HANDLE createIOThubClient(void);
 IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback);

@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.EventHubs.Processor;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.ServiceBus; //?
+using Microsoft.Azure.WebJobs.ServiceBus; 
 using ThermAlarm.Common;
 
 
 namespace ThermAlarm.EventProcessor
 {
+    
     class Program
     {
         static void Main(string[] args)

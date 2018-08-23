@@ -9,9 +9,35 @@ using ThermAlarm.Common;
 
 namespace ThermAlarm.EventProcessor
 {
+    
 
     class LoggingEventProcessor : IEventProcessor
     {
+        public void msgReceivedHandler(MsgObj msg, String deviceId)
+        {
+            DatabaseMgr.LogInDB(msg); /*Log msg in DB*/
+            eMsgType type = msg.mType;
+            switch (type)
+            {
+                case eMsgType.Meausurements:
+                    Console.WriteLine($"Got Measurement msg from device ID: '{deviceId}'");
+                    break;
+                case eMsgType.BTscan:
+                    Console.WriteLine($"Got BT scan msg from device ID: '{deviceId}'");
+                    break;
+                case eMsgType.MeasurementsAndBT:
+                    Console.WriteLine($"Got Measurement and BT scan msg from device ID: '{deviceId}'");
+                    break;
+                default:
+                    Console.WriteLine("ERROR - message is of unknown Type");
+                    break;
+            }
+
+            MsgReceivedEvent.OnMsgReceived(msg); // Raise event msgReceived
+        }
+
+        
+
         public Task OpenAsync(PartitionContext context)
         {
             Console.WriteLine("LoggingEventProcessor opened, processing partition: " +
@@ -50,28 +76,13 @@ namespace ThermAlarm.EventProcessor
                                   $"payload: '{payload}'");
 
                 MsgObj msg = JsonConvert.DeserializeObject<MsgObj>(payload);
-                DatabaseMgr.LogInDB(msg); /*Log msg in DB*/
-                eMsgType type = msg.mType;
-                switch (type)
-                {
-                    case eMsgType.Meausurements:
-                        Console.WriteLine($"Got Measurement msg from device ID: '{deviceId}'");
-                        break;
-                    case eMsgType.BTscan:
-                        Console.WriteLine($"Got BT scan msg from device ID: '{deviceId}'");
-                        break;
-                    case eMsgType.MeasurementsAndBT:
-                        Console.WriteLine($"Got Measurement and BT scan msg from device ID: '{deviceId}'");
-                        break;
-                    default:
-                        Console.WriteLine("ERROR - message is of unknown Type");
-                        break;
-                }
-
+                msgReceivedHandler(msg, (String)deviceId);
             }
             return context.CheckpointAsync();
         }
 
         
     }
+
+
 }

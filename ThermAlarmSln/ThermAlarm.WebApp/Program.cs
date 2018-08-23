@@ -16,6 +16,9 @@ namespace ThermAlarm.WebApp
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
+            Alarm alarm = new Alarm();
+            //TODO - add or remove people
+            
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

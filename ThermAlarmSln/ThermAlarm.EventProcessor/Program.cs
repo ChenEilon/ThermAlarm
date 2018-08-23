@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.EventHubs.Processor;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.ServiceBus; //?
 using ThermAlarm.Common;
 
 
@@ -9,10 +11,10 @@ namespace ThermAlarm.EventProcessor
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var hubName = Configs.HUB_NAME;
-            var iotHubConnctionString = Configs.IOT_HUB_CONNECTION_STRING;
+            var iotHubConnctionString = Configs.IOT_HUB_ENDPOINT_CONNECTION_STRING;
             var storgaeConnectionString = Configs.STORAGE_CONNECTION_STRING;
             var storageContainerName = Configs.STORAGE_CONTAINER_NAME;
             var consumerGroupName = PartitionReceiver.DefaultConsumerGroupName;
@@ -23,13 +25,17 @@ namespace ThermAlarm.EventProcessor
                 iotHubConnctionString,
                 storgaeConnectionString,
                 storageContainerName);
-            await processor.RegisterEventProcessorAsync<LoggingEventProcessor>();
+            processor.RegisterEventProcessorAsync<LoggingEventProcessor>().Wait();
 
-            Console.WriteLine("Event processor started, press enter to exit...");
-            Console.ReadLine();
+            var eventHubConfig = new EventHubConfiguration();
+            eventHubConfig.AddEventProcessorHost(hubName,processor);
 
-            await processor.UnregisterEventProcessorAsync();
+            var configuration = new JobHostConfiguration(storgaeConnectionString);
+            configuration.UseEventHub(eventHubConfig);
 
+            Console.WriteLine("Starting job host (event processor)...");
+            var host = new JobHost(configuration);
+            host.RunAndBlock();
 
         }
     }

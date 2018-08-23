@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using ThermAlarm.Common;
 
 namespace ThermAlarm.WebApp
 {
@@ -21,5 +22,7 @@ namespace ThermAlarm.WebApp
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+
+       
     }
 }

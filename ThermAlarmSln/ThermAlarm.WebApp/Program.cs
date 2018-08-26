@@ -44,8 +44,14 @@ namespace ThermAlarm.WebApp
             alarm.status = eDeviceAction.Disarm;
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Disarm, serviceClient).Wait();
             //TODO - should system be Armed again after a few second?
-            //TODO - call website ALARM function
-            
+            //TODO - call website DISARM function
+        }
+
+        public static void triggerArm()
+        {
+            alarm.status = eDeviceAction.Arm;
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Arm, serviceClient).Wait();
+            //TODO - call website ARM function
         }
 
         public static void msgReceived_handler(MsgObj msg)

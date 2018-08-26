@@ -1,28 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@using ThermAlarm.Common
+@model Person
+@{
+    ViewData["Title"] = "Add Person";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
 <div id="addPersonForm">
-    <form>
-        <label>First Name:</label>
+    <form method="post">
+        <label asp-for="firstName">First Name:</label>
         <br />
-        <input type="firstName" />
+        <input asp-for="firstName" />
         <br />
-        <label>Last Name:</label>
+        <label asp-for="lastName">Last Name:</label>
         <br />
-        <input type="lastName" />
+        <input asp-for="lastName" />
         <br />
-        <label>Email:</label>
+        <label asp-for="email">Email Name:</label>
         <br />
-        <input type="email" />
+        <input asp-for="email" />
         <br />
-        <label>BT id:</label>
+        <label asp-for="BTid">BT id:</label>
         <br />
-        <input type="BTid" />
+        <input asp-for="BTid" />
         <br />
-
+        <br />
         <input type="submit" value="Add member" />
     </form>
 </div>

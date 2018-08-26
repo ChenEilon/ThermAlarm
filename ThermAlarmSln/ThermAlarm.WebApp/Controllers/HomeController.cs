@@ -5,12 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ThermAlarm.WebApp.Models;
+using ThermAlarm.Common;
+using ThermAlarm.WebApp.Services;
 
 namespace ThermAlarm.WebApp.Controllers
 {
 
     public class HomeController : Controller
     {
+       // private IDatabaseManager databaseManager;
+
+        //public HomeController(IDatabaseManager databaseManager)
+        //{
+          //  this.databaseManager = databaseManager;
+        //}
 
         public IActionResult Index()
         {
@@ -24,10 +32,18 @@ namespace ThermAlarm.WebApp.Controllers
             return View();
         }
 
+        [HttpGet("contact")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
+            return View();
+        }
+        [HttpPost("contact")]
+        public IActionResult Contact(Person p)
+        {
+            //databaseManager.AddPersonToFamily(p);
+            //TODO enable...
             return View();
         }
 
@@ -53,6 +69,8 @@ namespace ThermAlarm.WebApp.Controllers
         {
             return Redirect("/");
         }
+
+        
     }
 
 }

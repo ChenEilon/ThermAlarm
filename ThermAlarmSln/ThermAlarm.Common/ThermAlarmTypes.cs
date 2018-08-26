@@ -25,6 +25,14 @@ namespace ThermAlarm.Common
         public string email { get; set; }
         public string BTid { get; set; }
 
+        public Person()
+        {
+            this.firstName = "";
+            this.lastName = "";
+            this.email = "";
+            this.BTid = "";
+        }
+
         public Person(String firstName, String lastName, String password, String email, String BTid)
         {
             this.firstName = firstName;

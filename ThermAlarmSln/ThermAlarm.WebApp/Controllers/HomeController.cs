@@ -8,8 +8,10 @@ using ThermAlarm.WebApp.Models;
 
 namespace ThermAlarm.WebApp.Controllers
 {
+
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
             return View();
@@ -33,5 +35,24 @@ namespace ThermAlarm.WebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult Arm()
+        {
+            return Redirect("/");
+        }
+
+        [HttpGet]
+        public IActionResult Disarm()
+        {
+            return Redirect("/");
+        }
+
+        [HttpGet]
+        public IActionResult Alarm()
+        {
+            return Redirect("/");
+        }
     }
+
 }

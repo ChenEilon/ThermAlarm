@@ -4,14 +4,25 @@
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div id="addPersonForm">
+    <form>
+        <label>First Name:</label>
+        <br />
+        <input type="firstName" />
+        <br />
+        <label>Last Name:</label>
+        <br />
+        <input type="lastName" />
+        <br />
+        <label>Email:</label>
+        <br />
+        <input type="email" />
+        <br />
+        <label>BT id:</label>
+        <br />
+        <input type="BTid" />
+        <br />
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        <input type="submit" value="Add member" />
+    </form>
+</div>

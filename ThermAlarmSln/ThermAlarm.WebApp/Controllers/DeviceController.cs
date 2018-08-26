@@ -29,12 +29,12 @@ namespace ThermAlarm.WebApp.Controllers
             //DeviceMgr.ReceiveFeedback(serviceClient);
         }
 
-        [HttpGet]
         public IActionResult Arm()
         {
             /*This function calls the action Arm on the device.
              The function does not get a feedback*/
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Arm, serviceClient).Wait();
+            //Console.WriteLine("THIS IS A TEST!");
             return Ok("Arm Command was sent to Device Device!"); // TODO - change to logger
         }
 

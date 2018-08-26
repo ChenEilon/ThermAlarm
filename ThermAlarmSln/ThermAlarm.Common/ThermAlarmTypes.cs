@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ThermAlarm.Common
@@ -20,6 +23,8 @@ namespace ThermAlarm.Common
 
     public class Person
     {
+        [Key]
+        public int ID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
@@ -55,13 +60,31 @@ namespace ThermAlarm.Common
 
     public class MsgObj
     {
+        [Key]
+        public int ID { get; set; }
+
         public eMsgType mType { get; set; }
 
         public int pirValue { get; set; }
 
-        public float[] thermValue { get; set; }
+        [NotMapped]
+        public float[] thermValue
+        {
+            get => Array.ConvertAll(thermValueInternal.Split(','), float.Parse);
+            set => thermValueInternal = string.Join(',', value);
+        }
 
-        public string[] idsBTScan { get; set; }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string thermValueInternal { get; set; }
 
+        [NotMapped]
+        public string[] idsBTScan
+        {
+            get => idsBTScanInternal.Split(',');
+            set => idsBTScanInternal = string.Join(',', value);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string idsBTScanInternal { get; set; }
     }
 }

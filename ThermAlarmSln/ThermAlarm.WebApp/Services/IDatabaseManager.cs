@@ -17,5 +17,11 @@ namespace ThermAlarm.WebApp.Services
         void RemovePersonFromFamily(Person p);
 
         #endregion
+
+        #region Msg Methods
+
+        void LogInDB(MsgObj msg);
+
+        #endregion
     }
 }

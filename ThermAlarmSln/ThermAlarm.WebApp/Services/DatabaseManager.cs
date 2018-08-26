@@ -45,5 +45,15 @@ namespace ThermAlarm.WebApp.Services
         }
 
         #endregion
+
+        #region Msg Methods
+
+        public void LogInDB(MsgObj msg)
+        {
+            context.Msg.Add(msg);
+            context.SaveChanges();
+        }
+
+        #endregion
     }
 }

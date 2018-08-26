@@ -1,17 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@using ThermAlarm.Common
+@model Person
+@{
+    ViewData["Title"] = "Add Person";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div id="addPersonForm">
+    <form method="post">
+        <label asp-for="firstName">First Name:</label>
+        <br />
+        <input asp-for="firstName" />
+        <br />
+        <label asp-for="lastName">Last Name:</label>
+        <br />
+        <input asp-for="lastName" />
+        <br />
+        <label asp-for="email">Email Name:</label>
+        <br />
+        <input asp-for="email" />
+        <br />
+        <label asp-for="BTid">BT id:</label>
+        <br />
+        <input asp-for="BTid" />
+        <br />
+        <br />
+        <input type="submit" value="Add member" />
+    </form>
+</div>

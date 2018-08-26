@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using ThermAlarm.Common;
 
-namespace ThermAlarm.Common
+namespace ThermAlarm.WebApp
 {
     public class Alarm
     {
@@ -13,14 +15,14 @@ namespace ThermAlarm.Common
         public Alarm()
         {
             this.status = eDeviceAction.Disarm;
-            if(DatabaseMgr.IsFamily())
-            {
-                this.family = DatabaseMgr.GetFamily();
-            }
-            else
-            {
-                this.family = new Hashtable();
-            }
+            // if(DatabaseMgr.IsFamily())
+            //{
+            //  this.family = DatabaseMgr.GetFamily();
+            //}
+            //else
+            //{
+            this.family = new Hashtable();
+            //}
         }
 
         /**************************** Family *****************************/
@@ -28,26 +30,22 @@ namespace ThermAlarm.Common
         public void addFamilyMember(Person p)
         {
             this.family.Add(p.BTid, p);
-            DatabaseMgr.AddPersonToFamily(p);
+            //DatabaseMgr.AddPersonToFamily(p);
         }
 
         public void removeFamilyMember(Person p)
         {
             this.family.Remove(p.BTid);
-            DatabaseMgr.RemovePersonFromFamily(p);
+            //DatabaseMgr.RemovePersonFromFamily(p);
         }
 
         public bool isFamilyMember(String BTid)
         {
             return family.ContainsKey(BTid);
         }
-
-        
-
-
-
     }
 }
+
 
 ////TODO - Gal move to backend
 //const int HEAT_MEAS_RES = 8;

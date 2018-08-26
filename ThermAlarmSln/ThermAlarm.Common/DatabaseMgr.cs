@@ -22,7 +22,7 @@ namespace ThermAlarm.Common
         /**************************** Family Mgr *****************************/
         /*********************************************************************/
 
-        public static bool isFamily()
+        public static bool IsFamily()
         {
             //TODO complete
             return false;
@@ -34,12 +34,12 @@ namespace ThermAlarm.Common
             return new Hashtable();
         }
 
-        public static void addPersonToFamily(Person p)
+        public static void AddPersonToFamily(Person p)
         {
             //TODO complete
         }
 
-        public static void removePersonFromFamily(Person p)
+        public static void RemovePersonFromFamily(Person p)
         {
             //TODO complete
         }

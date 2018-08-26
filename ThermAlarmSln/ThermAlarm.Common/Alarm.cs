@@ -13,7 +13,7 @@ namespace ThermAlarm.Common
         public Alarm()
         {
             this.status = eDeviceAction.Disarm;
-            if(DatabaseMgr.isFamily())
+            if(DatabaseMgr.IsFamily())
             {
                 this.family = DatabaseMgr.GetFamily();
             }
@@ -28,13 +28,13 @@ namespace ThermAlarm.Common
         public void addFamilyMember(Person p)
         {
             this.family.Add(p.BTid, p);
-            DatabaseMgr.addPersonToFamily(p);
+            DatabaseMgr.AddPersonToFamily(p);
         }
 
         public void removeFamilyMember(Person p)
         {
             this.family.Remove(p.BTid);
-            DatabaseMgr.removePersonFromFamily(p);
+            DatabaseMgr.RemovePersonFromFamily(p);
         }
 
         public bool isFamilyMember(String BTid)

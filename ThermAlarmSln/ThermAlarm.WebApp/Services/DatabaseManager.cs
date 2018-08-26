@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using ThermAlarm.Common;
 using ThermAlarm.WebApp.Models;
 
-namespace ThermAlarm.WebApp.Controllers
+namespace ThermAlarm.WebApp.Services
 {
-    public class DatabaseController
+    public class DatabaseManager : IDatabaseManager
     {
         private ThermAlarmDbContext context;
 
-        public DatabaseController(ThermAlarmDbContext context)
+        public DatabaseManager(ThermAlarmDbContext context)
         {
             this.context = context;
         }

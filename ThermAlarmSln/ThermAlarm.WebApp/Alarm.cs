@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Azure.Devices;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +8,39 @@ using ThermAlarm.Common;
 
 namespace ThermAlarm.WebApp
 {
-    public class Alarm
+    public sealed class Alarm
     {
+        /*singelton pattern*/
         public eDeviceAction status { get; set; }
         private Hashtable family;
+        public ServiceClient serviceClient;
 
-        public Alarm()
+        // A private static instance of the same class
+        private static Alarm instance = null;
+
+        // A private constructor to restrict the object creation from outside
+        private Alarm()
         {
             this.status = eDeviceAction.Disarm;
-            // if(DatabaseMgr.IsFamily())
-            //{
-            //  this.family = DatabaseMgr.GetFamily();
-            //}
-            //else
-            //{
-            this.family = new Hashtable();
-            //}
+            this.family = new Hashtable(); //TODO - add database read from DB, if family exist, return hashtable of it
+            serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
+            MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
         }
 
-        /**************************** Family *****************************/
+        public static Alarm GetInstance()
+        {
+            // create the instance only if the instance is null
+            if (instance == null)
+            {
+                instance = new Alarm();
+            }
+            // Otherwise return the already existing instance
+            return instance;
+        }
 
+
+        #region Family Methods
+        //TODO - add database calls.. family should be held as hashtable in runtime for making BT id query fast (ALARM is at runtime)
         public void addFamilyMember(Person p)
         {
             this.family.Add(p.BTid, p);
@@ -43,77 +57,61 @@ namespace ThermAlarm.WebApp
         {
             return family.ContainsKey(BTid);
         }
+
+        #endregion
+
+        #region Event handeling
+        public void triggerAction(eDeviceAction act)
+        {
+            this.status = act;
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
+            //TODO - call DB here
+            //TODO - call website action function?
+        }
+
+        public void msgReceived_handler(MsgObj msg)
+        {
+            //1. check msg type
+            //TODO - figure out what if measurments msg before known bt - should alarm? activly scan? 
+            eMsgType type = msg.mType;
+            bool member = false;
+            if (type == eMsgType.Meausurements || type == eMsgType.MeasurementsAndBT)
+            {
+                if (this.status == eDeviceAction.Arm)
+                {
+                    if (SensorsProcessing.shouldAlarm(msg.pirValue, msg.thermValue))
+                    {
+                        triggerAction(eDeviceAction.Alarm);
+                    }
+
+                }
+            }
+            if (type == eMsgType.BTscan || type == eMsgType.MeasurementsAndBT)
+            {
+                if (this.status == eDeviceAction.Arm)
+                {
+                    foreach (String BTid in msg.idsBTScan)
+                    {
+                        if (this.isFamilyMember(BTid))
+                        {
+                            member = true;
+                            break;
+                        }
+                    }
+                    if (!member)
+                    {
+                        triggerAction(eDeviceAction.Alarm);
+                    }
+                    else
+                    {
+                        triggerAction(eDeviceAction.Disarm);
+                    }
+                }
+            }
+            //TODO - should log be here and nor in event processor?
+            #endregion
+        }
     }
 }
 
 
-////TODO - Gal move to backend
-//const int HEAT_MEAS_RES = 8;
-//public static void measurementsCallback(int pirValue, int[] thermValue)
-//{
-//    Console.WriteLine("Entered Measurements callback:");
-//    Console.WriteLine("PIR sensor value is: {}",pirValue);
-//    Console.WriteLine("Therm camera sensor value is: {}", thermValue);
-//}
-//public static void BTCallback()
-//{
-//    Console.WriteLine("Entered BT callback...");
-//}
-//public static int[,] Make2DArray(int[] input, int rowCount, int colCount)
-//{
-//        int[,] output = new int[rowCount, colCount];
-//        if (rowCount * colCount <= input.Length)
-//        {
-//            for (int i = 0; i < rowCount; i++)
-//            {
-//                for (int j = 0; j < colCount; j++)
-//                {
-//                    output[i, j] = input[i * colCount + j];
-//                }
-//            }
-//        }
-//        return output;
-//}
-//public static void fillData(int[] input)
-//{
-//    int[,] data = Make2DArray(input, HEAT_MEAS_RES, HEAT_MEAS_RES);
-//    int maxRow = HEAT_MEAS_RES;
-//    int maxCol = HEAT_MEAS_RES;
-//    double factor = 1.0;
-//    DataGridView DGV;
-
-//    DGV.RowHeadersVisible = false;
-//    DGV.ColumnHeadersVisible = false;
-//    DGV.AllowUserToAddRows = false;
-//    DGV.AllowUserToOrderColumns = false;
-//    DGV.CellBorderStyle = DataGridViewCellBorderStyle.None;
-//    //..
-
-//    int rowHeight = DGV.ClientSize.Height / maxRow - 1;
-//    int colWidth = DGV.ClientSize.Width / maxCol - 1;
-
-//    for (int c = 0; c < maxRow; c++) DGV.Columns.Add(c.ToString(), "");
-//    for (int c = 0; c < maxRow; c++) DGV.Columns[c].Width = colWidth;
-//    DGV.Rows.Add(maxRow);
-//    for (int r = 0; r < maxRow; r++) DGV.Rows[r].Height = rowHeight;
-
-//    List<Color> baseColors = new List<Color>();  // create a color list
-//    baseColors.Add(Color.RoyalBlue);
-//    baseColors.Add(Color.LightSkyBlue);
-//    baseColors.Add(Color.LightGreen);
-//    baseColors.Add(Color.Yellow);
-//    baseColors.Add(Color.Orange);
-//    baseColors.Add(Color.Red);
-//    List<Color> colors = interpolateColors(baseColors, 1000);
-
-//    for (int r = 0; r < maxRow; r++)
-//    {
-//        for (int c = 0; c < maxRow; c++)
-//        {
-//            DGV[r, c].Style.BackColor =
-//                           colors[Convert.ToInt16(data[r][c].Item2 * factor)];
-
-//        }
-//    }
-
-//}

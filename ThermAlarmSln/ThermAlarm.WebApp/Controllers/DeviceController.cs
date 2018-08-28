@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 
 namespace ThermAlarm.WebApp.Controllers
 {
+    //TODO - This controller is for tries. delete in the end
     //[Produces("application/json")]
     [Route("[Controller]/[action]")]
     public class DeviceController : Controller

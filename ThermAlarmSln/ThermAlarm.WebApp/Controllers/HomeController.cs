@@ -13,12 +13,14 @@ namespace ThermAlarm.WebApp.Controllers
 
     public class HomeController : Controller
     {
-       // private IDatabaseManager databaseManager;
+        // private IDatabaseManager databaseManager;
+        public Alarm alarm;
 
-        //public HomeController(IDatabaseManager databaseManager)
-        //{
+        public HomeController(IDatabaseManager databaseManager)
+        {
           //  this.databaseManager = databaseManager;
-        //}
+          this.alarm = Alarm.GetInstance();
+        }
 
         public IActionResult Index()
         {
@@ -32,15 +34,15 @@ namespace ThermAlarm.WebApp.Controllers
             return View();
         }
 
-        [HttpGet("contact")]
-        public IActionResult Contact()
+        [HttpGet("addPerson")]
+        public IActionResult AddPerson()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Add Person page.";
 
             return View();
         }
-        [HttpPost("contact")]
-        public IActionResult Contact(Person p)
+        [HttpPost("addPerson")]
+        public IActionResult AddPerson(Person p)
         {
             //databaseManager.AddPersonToFamily(p);
             //TODO enable...
@@ -55,18 +57,21 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Arm()
         {
+            this.alarm.triggerAction(eDeviceAction.Arm);
             return Redirect("/");
         }
 
         [HttpGet]
         public IActionResult Disarm()
         {
+            this.alarm.triggerAction(eDeviceAction.Disarm);
             return Redirect("/");
         }
 
         [HttpGet]
-        public IActionResult Alarm()
+        public IActionResult Buzz()
         {
+            this.alarm.triggerAction(eDeviceAction.Alarm);
             return Redirect("/");
         }
 

@@ -24,7 +24,7 @@ namespace ThermAlarm.Common
     public class Person
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
@@ -69,7 +69,7 @@ namespace ThermAlarm.Common
     public class MsgObj
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public eMsgType mType { get; set; }
 

@@ -22,14 +22,14 @@
 /**********************************************/
 #define WIFI_SSID            "prolog ap"
 #define WIFI_PASSWORD        "nufGZ8N5"
-#define IOT_CONFIG_CONNECTION_STRING    "HostName=IOThubLightTry.azure-devices.net;DeviceId=LightTry1;SharedAccessKey=6dAcCiG7lDBeqsVzaaHXOT0cR0UoODRZgqQ8iDtdhjM="
+#define IOT_CONFIG_CONNECTION_STRING    "HostName=ThermAlarmIOTHub.azure-devices.net;DeviceId=thermAlarmDevice;SharedAccessKey=Iv5yW1T+t2GaptF/Cba2QT8us86N0oYK3D7e/r1e6sU="
 /* Choose the transport protocol*/
 #define IOT_CONFIG_MQTT                 // uncomment this line for MQTT
 // #define IOT_CONFIG_HTTP              // uncomment this line for HTTP
 
 #define MESSAGE_MAX_LEN 1024
 #define DEBUG_SEC 2000
-#define DEVICE_ID "LightTry1" //TODO - fill device id.
+#define DEVICE_ID "thermAlarmDevice" //TODO - fill device id.
 
 /**********************************************/
 /*********** ThermAlarm Types & Setup *********/
@@ -46,7 +46,7 @@ typedef enum _eThermAlarmStatus {
 #define PIR_PIN 14
 #define RX_PIN 12
 #define TX_PIN 13
-//#define BUZZER_PIN
+#define BUZZER_PIN 16
 
 #define THERMAL_ARRAY_SIZE 64
 #define BT_DATA_BAUD_RATE 9600

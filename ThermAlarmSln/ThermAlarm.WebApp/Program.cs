@@ -15,16 +15,13 @@ namespace ThermAlarm.WebApp
 {
     public class Program
     {
-        
         public static Alarm alarm;
 
         public static void Main(string[] args)
         {
-            
             alarm = Alarm.GetInstance();
-            
-            //TODO - add or remove people?
 
+            //TODO - add or remove people?
 
             BuildWebHost(args).Run();
         }
@@ -33,9 +30,5 @@ namespace ThermAlarm.WebApp
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
-
-
-        
-        
     }
 }

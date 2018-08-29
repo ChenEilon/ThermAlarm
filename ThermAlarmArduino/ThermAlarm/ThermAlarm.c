@@ -12,7 +12,7 @@ DECLARE_MODEL(mThermAlarm,
   WITH_DATA(uint8_t, PIRvalue),//TODO - add therm sensor data
   WITH_ACTION(Arm),
   WITH_ACTION(Disarm), //TODO - Do we seprate disarm and turn off alarm?
-  WITH_ACTION(TurnOnAlarm)
+  WITH_ACTION(Alarm)
 );
 
 END_NAMESPACE(ThermAlarmNS);
@@ -31,13 +31,15 @@ EXECUTE_COMMAND_RESULT Arm(mThermAlarm* device){
 EXECUTE_COMMAND_RESULT Disarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  DISARMED;
+  digitalWrite(16, LOW);
   LogInfo("Disarm!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }
 
-EXECUTE_COMMAND_RESULT TurnOnAlarm(mThermAlarm* device){
+EXECUTE_COMMAND_RESULT Alarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  ALARM;
+  digitalWrite(16, HIGH);
   LogInfo("BUZZZ!!!!!!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }

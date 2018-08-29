@@ -15,8 +15,7 @@ namespace ThermAlarm.WebApp.Controllers
     {
         // private IDatabaseManager databaseManager;
         public Alarm alarm;
-        bool isFirst = true;
-        
+      
 
         public HomeController()//IDatabaseManager databaseManager)
         {

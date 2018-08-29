@@ -14,7 +14,7 @@ namespace ThermAlarm.Common
             int countWarm = 0;
             foreach (int i in thermValues)
             {
-                if (i > 30)
+                if (i > 25)
                     countWarm++;
             }
             return (countWarm > 20);

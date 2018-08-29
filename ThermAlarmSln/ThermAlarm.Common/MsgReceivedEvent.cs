@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ThermAlarm.Common
 {
+    //TODO - delete class
     public delegate void msgReceivedHandler(MsgObj msg);
     public static class MsgReceivedEvent
     {
@@ -16,5 +20,7 @@ namespace ThermAlarm.Common
                 MsgReceived(msg);
             }
         }
+
+        
     }
 }

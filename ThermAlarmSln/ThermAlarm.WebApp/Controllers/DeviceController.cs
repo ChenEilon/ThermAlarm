@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using ThermAlarm.WebApp.Models;
 using ThermAlarm.Common;
 using System.Text;
 using System.Threading;
@@ -13,13 +13,13 @@ using Newtonsoft.Json;
 
 namespace ThermAlarm.WebApp.Controllers
 {
-    //TODO - This controller is for tries. delete in the end
     //[Produces("application/json")]
     [Route("[Controller]/[action]")]
     public class DeviceController : Controller
     {
         ServiceClient serviceClient;
         RegistryManager registryManager;
+        Alarm myAlarm;
 
         public DeviceController()
         {
@@ -28,8 +28,24 @@ namespace ThermAlarm.WebApp.Controllers
             registryManager = RegistryManager.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
             //DeviceMgr.ReceiveFeedback(serviceClient);
+            this.myAlarm = Alarm.GetInstance();
         }
 
+        [HttpPost]
+        public IActionResult msg_handler(string payload)
+        {
+            if(payload!=null)
+            {
+                MsgObj msg = JsonConvert.DeserializeObject<MsgObj>(payload.Substring(5, payload.Length));
+                myAlarm.msgReceived_handler(msg);
+                return Ok("Msg transfered..."); // TODO - change to logger
+            }
+            return Ok("Payload null.");
+        }
+
+        #region DEBUG_FUNCTIONS
+
+        [HttpGet]
         public IActionResult Arm()
         {
             /*This function calls the action Arm on the device.
@@ -49,12 +65,13 @@ namespace ThermAlarm.WebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Alarm()
+        public IActionResult AlarmOn()
         {
             /*This function calls the action ALARM on the device.
              The function does not get a feedback*/
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Alarm, serviceClient).Wait();
             return Ok("ALARM!! Command was sent to Device Device! BUZZZZZZ"); // TODO - change to logger
         }
+        #endregion
     }
 }

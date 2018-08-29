@@ -16,12 +16,12 @@ namespace ThermAlarm.WebApp
     public class Program
     {
         
-        public static Alarm alarm;
+        //public static Alarm alarm;
 
         public static void Main(string[] args)
         {
             
-            alarm = Alarm.GetInstance();
+            //alarm = Alarm.GetInstance();
             
             //TODO - add or remove people?
 

@@ -1,12 +1,12 @@
-﻿using Microsoft.Azure.Devices;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Azure.Devices;
+using System.Collections;
 using ThermAlarm.Common;
 
-namespace ThermAlarm.WebApp
+namespace ThermAlarm.WebApp.Models
 {
     public sealed class Alarm
     {
@@ -24,7 +24,7 @@ namespace ThermAlarm.WebApp
             this.status = eDeviceAction.Disarm;
             this.family = new Hashtable(); //TODO - add database read from DB, if family exist, return hashtable of it
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
-            MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
+            //MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
         }
 
         public static Alarm GetInstance()
@@ -64,7 +64,7 @@ namespace ThermAlarm.WebApp
         public void triggerAction(eDeviceAction act)
         {
             this.status = act;
-            //DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
+            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
             //TODO - call DB here
             //TODO - call website action function?
         }
@@ -113,5 +113,3 @@ namespace ThermAlarm.WebApp
         }
     }
 }
-
-

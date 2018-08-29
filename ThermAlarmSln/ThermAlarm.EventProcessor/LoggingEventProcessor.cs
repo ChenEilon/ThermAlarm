@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.EventHubs;
@@ -9,11 +11,11 @@ using ThermAlarm.Common;
 
 namespace ThermAlarm.EventProcessor
 {
-    
 
     class LoggingEventProcessor : IEventProcessor
     {
-        public void msgReceivedHandler(MsgObj msg, String deviceId)
+
+        public void msgReceivedHandler(MsgObj msg, String deviceId, string payload)
         {
             //DatabaseMgr.LogInDB(msg); /*Log msg in DB*/ TODO figure where to save in DB
             eMsgType type = msg.mType;
@@ -33,7 +35,9 @@ namespace ThermAlarm.EventProcessor
                     break;
             }
 
-            MsgReceivedEvent.OnMsgReceived(msg); // Raise event msgReceived
+            //MsgReceivedEvent.OnMsgReceived(msg); // Raise event msgReceived
+            //GetAsync(Configs.GAL_LOCAL_WEB_API + @"/Device/msg_handler").Wait(); // try call controller
+            Post(Configs.GAL_LOCAL_WEB_API + @"/Device/msg_handler", "="+payload, "application/x-www-form-urlencoded");
         }
 
         
@@ -75,13 +79,73 @@ namespace ThermAlarm.EventProcessor
                                   $"device ID: '{deviceId}', " +
                                   $"payload: '{payload}'");
 
+                
                 MsgObj msg = JsonConvert.DeserializeObject<MsgObj>(payload);
-                msgReceivedHandler(msg, (String)deviceId);
+                msgReceivedHandler(msg, (String)deviceId, payload);
             }
             return context.CheckpointAsync();
         }
 
-        
+        public async Task GetAsync(string uri)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                await reader.ReadToEndAsync();
+            }
+        }
+
+        public async Task PostAsync(string uri, string data, string contentType, string method = "POST")
+        {
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            request.ContentLength = dataBytes.Length;
+            request.ContentType = contentType;
+            request.Method = method;
+
+            using (Stream requestBody = request.GetRequestStream())
+            {
+                await requestBody.WriteAsync(dataBytes, 0, dataBytes.Length);
+            }
+
+            using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                await reader.ReadToEndAsync();
+            }
+        }
+
+        public string Post(string uri, string data, string contentType, string method = "POST")
+        {
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            request.ContentLength = dataBytes.Length;
+            request.ContentType = contentType;
+            request.Method = method;
+
+            using (Stream requestBody = request.GetRequestStream())
+            {
+                requestBody.Write(dataBytes, 0, dataBytes.Length);
+            }
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+
+
     }
 
 

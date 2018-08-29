@@ -78,21 +78,21 @@ namespace ThermAlarm.Common
         [NotMapped]
         public float[] thermValue
         {
-            get => Array.ConvertAll(thermValueInternal.Split(','), float.Parse);
+            get => Array.ConvertAll(thermValueInternal.Split(',', StringSplitOptions.RemoveEmptyEntries), float.Parse);
             set => thermValueInternal = string.Join(',', value);
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public string thermValueInternal { get; set; }
+        public string thermValueInternal { get; set; } = "";
 
         [NotMapped]
         public string[] idsBTScan
         {
-            get => idsBTScanInternal.Split(',');
+            get => idsBTScanInternal.Split(',', StringSplitOptions.RemoveEmptyEntries);
             set => idsBTScanInternal = string.Join(',', value);
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public string idsBTScanInternal { get; set; }
+        public string idsBTScanInternal { get; set; } = "";
     }
 }

@@ -15,15 +15,19 @@ namespace ThermAlarm.WebApp.Controllers
     {
         // private IDatabaseManager databaseManager;
         public Alarm alarm;
+        bool isFirst = true;
+        
 
-        public HomeController(IDatabaseManager databaseManager)
+        public HomeController()//IDatabaseManager databaseManager)
         {
           //  this.databaseManager = databaseManager;
           this.alarm = Alarm.GetInstance();
+        
         }
 
         public IActionResult Index()
         {
+            TempData.Keep();
             return View();
         }
 
@@ -57,6 +61,8 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Arm()
         {
+            TempData["Color"] = "#F9E79F";
+            TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Arm);
             return Redirect("/");
         }
@@ -64,6 +70,9 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Disarm()
         {
+            TempData["Color"] = "#ABEBC6";
+            TempData.Keep();
+            ViewData["visibility"] = "hidden";
             this.alarm.triggerAction(eDeviceAction.Disarm);
             return Redirect("/");
         }
@@ -71,6 +80,9 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Buzz()
         {
+            TempData["Color"] = "red";
+            TempData.Keep();
+            ViewData["visibility"] = "";
             this.alarm.triggerAction(eDeviceAction.Alarm);
             return Redirect("/");
         }

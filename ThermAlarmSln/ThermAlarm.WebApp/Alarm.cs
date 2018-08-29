@@ -64,7 +64,7 @@ namespace ThermAlarm.WebApp
         public void triggerAction(eDeviceAction act)
         {
             this.status = act;
-            DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
+            //DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
             //TODO - call DB here
             //TODO - call website action function?
         }

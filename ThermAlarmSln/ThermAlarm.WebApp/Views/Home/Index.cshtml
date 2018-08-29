@@ -1,24 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ViewData["IndexColor"] = "green";
+    ViewData["visibility"] = "hidden";
+
 }
 
 
-    <h1> Alarm main page!</h1>
-    <div id="interface">
-        <button id="ArmBtn" class="btn btn-success">Arm</button>
+<h1> Alarm main page!</h1>
+<p>Color: @TempData["Color"]</p>
+<script>document.body.style.backgroundColor = '@TempData["Color"]';</script>
+<div id="interface">
+    <button id="ArmBtn" class="btn btn-success">Arm</button>
+    <br />
+    <br />
+    <button id="DisarmBtn" class="btn btn-success">Disarm</button>
+    <br />
+    <br />
+    <label id="Alarm"> <font color="#7B241C">Alarm!!!  BUZZZZ</font></label>
 
-        <button id="DisarmBtn" class="btn btn-success">Disarm</button>
-
-        <label id="Alarm">Alarm</label>
-
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script>
-    $('#ArmBtn').click(function () { document.location = '@Url.Action("Arm","Home")'; });
-        </script>
-        <script>
-    $('#DisarmBtn').click(function () { document.location = '@Url.Action("Disarm","Home")'; });
-        </script>
-    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+            $('#ArmBtn').click(function () {
+                document.location = '@Url.Action("Arm","Home")';
+            });
+    </script>
+    <script>
+            $('#DisarmBtn').click(function () {
+                document.location = '@Url.Action("Disarm","Home")';
+            });
+    </script>
+</div>
 
 

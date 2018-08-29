@@ -15,7 +15,7 @@ void readMessage(int messageId, char *payload) {
   JsonObject &root = jsonBuffer.createObject();
   root["deviceId"] = DEVICE_ID;
   root["messageId"] = messageId;
-  root["mType"] = 2;
+  root["mType"] = 0;
   root["pirValue"] = pirValue;
   JsonArray& thermValue = root.createNestedArray("thermValue");
 //  thermValue.copyFrom(thermData);

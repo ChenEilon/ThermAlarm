@@ -17,7 +17,6 @@ namespace ThermAlarm.EventProcessor
 
         public void msgReceivedHandler(MsgObj msg, String deviceId, string payload)
         {
-            //DatabaseMgr.LogInDB(msg); /*Log msg in DB*/ TODO figure where to save in DB
             eMsgType type = msg.mType;
             switch (type)
             {

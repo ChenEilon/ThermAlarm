@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Devices;
 using System.Collections;
 using ThermAlarm.Common;
+using ThermAlarm.WebApp.Services;
 
 namespace ThermAlarm.WebApp.Models
 {
     public sealed class Alarm
     {
+        private IDatabaseManager dbManager;
+
         /*singelton pattern*/
         public eDeviceAction status { get; set; }
         private Hashtable family;
@@ -19,20 +22,21 @@ namespace ThermAlarm.WebApp.Models
         private static Alarm instance = null;
 
         // A private constructor to restrict the object creation from outside
-        private Alarm()
+        private Alarm(IDatabaseManager dbManager)
         {
+            this.dbManager = dbManager;
             this.status = eDeviceAction.Disarm;
             this.family = new Hashtable(); //TODO - add database read from DB, if family exist, return hashtable of it
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
         }
 
-        public static Alarm GetInstance()
+        public static Alarm GetInstance(IDatabaseManager dbManager)
         {
             // create the instance only if the instance is null
             if (instance == null)
             {
-                instance = new Alarm();
+                instance = new Alarm(dbManager);
             }
             // Otherwise return the already existing instance
             return instance;

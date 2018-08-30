@@ -13,14 +13,13 @@ namespace ThermAlarm.WebApp.Controllers
 
     public class HomeController : Controller
     {
-        // private IDatabaseManager databaseManager;
+        private IDatabaseManager dbManager;
         public Alarm alarm;
-      
 
-        public HomeController()//IDatabaseManager databaseManager)
+        public HomeController(IDatabaseManager dbManager)
         {
-          //  this.databaseManager = databaseManager;
-          this.alarm = Alarm.GetInstance();
+          this.dbManager = dbManager;
+          this.alarm = Alarm.GetInstance(dbManager);
         
         }
 

@@ -23,7 +23,7 @@ namespace ThermAlarm.WebApp.Controllers
         RegistryManager registryManager;
         Alarm myAlarm;
 
-        public DeviceController(IDatabaseManager dbManager)
+        public DeviceController(IDatabaseManager dbManager, Alarm alarm)
         {
             this.dbManager = dbManager;
             //init DeviceMgr
@@ -31,7 +31,7 @@ namespace ThermAlarm.WebApp.Controllers
             registryManager = RegistryManager.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
             //DeviceMgr.ReceiveFeedback(serviceClient);
-            this.myAlarm = Alarm.GetInstance(dbManager);
+            this.myAlarm = alarm;
         }
 
         [HttpPost]

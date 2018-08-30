@@ -25,8 +25,12 @@ namespace ThermAlarm.WebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ThermAlarmDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IDatabaseManager, DatabaseManager>();
+            services.AddDbContext<ThermAlarmDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),
+                ServiceLifetime.Singleton
+            );
+            services.AddSingleton<IDatabaseManager, DatabaseManager>();
+            services.AddSingleton<Alarm>();
             services.AddMvc();
         }
 

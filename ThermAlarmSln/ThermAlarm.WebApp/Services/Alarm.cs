@@ -18,14 +18,11 @@ namespace ThermAlarm.WebApp.Models
         private Hashtable family;    //hashtable to query fast at runtime (ALARM)
         public ServiceClient serviceClient;
 
-        // A private static instance of the same class
-        private static Alarm instance = null;
-
         // A private constructor to restrict the object creation from outside
-        private Alarm(IDatabaseManager dbManager)
+        public Alarm(IDatabaseManager dbManager)
         {
             this.dbManager = dbManager;
-            this.status = eDeviceAction.Disarm;
+            this.status = eDeviceAction.Disarm; // TODO: read from db
             if(dbManager.IsFamily())
             {
                 this.family = dbManager.GetFamily();
@@ -37,18 +34,6 @@ namespace ThermAlarm.WebApp.Models
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
         }
-
-        public static Alarm GetInstance(IDatabaseManager dbManager)
-        {
-            // create the instance only if the instance is null
-            if (instance == null)
-            {
-                instance = new Alarm(dbManager);
-            }
-            // Otherwise return the already existing instance
-            return instance;
-        }
-
 
         #region Family Methods
         
@@ -118,7 +103,7 @@ namespace ThermAlarm.WebApp.Models
                     }
                 }
             }
-            #endregion
         }
+        #endregion
     }
 }

@@ -23,12 +23,13 @@ namespace ThermAlarm.Common
 
     public class Person
     {
-        [Key]
-        public int Id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public string BTid { get; set; }
+        public Person(String firstName, String lastName, String password, String email, String BTid)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.BTid = BTid;
+        }
 
         public Person()
         {
@@ -38,13 +39,20 @@ namespace ThermAlarm.Common
             this.BTid = "";
         }
 
-        public Person(String firstName, String lastName, String password, String email, String BTid)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.email = email;
-            this.BTid = BTid;
-        }
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public string firstName { get; set; }
+
+        [Required]
+        public string lastName { get; set; }
+
+        [Required]
+        public string email { get; set; }
+
+        [Required]
+        public string BTid { get; set; }
     }
 
     public class deviceAction
@@ -94,5 +102,22 @@ namespace ThermAlarm.Common
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string idsBTScanInternal { get; set; } = "";
+    }
+
+    public class AlarmAction
+    {
+        public AlarmAction(eDeviceAction act)
+        {
+            this.Type = act;
+        }
+
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public eDeviceAction Type { get; set; }
+
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreateTime { get; set; }
     }
 }

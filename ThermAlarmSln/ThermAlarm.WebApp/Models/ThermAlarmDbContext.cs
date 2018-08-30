@@ -15,5 +15,6 @@ namespace ThermAlarm.WebApp.Models
 
         public DbSet<MsgObj> Msg { get; set; }
         public DbSet<Person> Person { get; set; }
+        public DbSet<AlarmAction> AlarmAction { get; set; }
     }
 }

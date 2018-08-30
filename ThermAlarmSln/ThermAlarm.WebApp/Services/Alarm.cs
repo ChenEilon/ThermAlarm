@@ -68,42 +68,30 @@ namespace ThermAlarm.WebApp.Models
 
         public void msgReceived_handler(MsgObj msg)
         {
-            //TODO - figure out what if measurments msg before known bt - should alarm? activly scan? 
             eMsgType type = msg.mType;
-            bool member = false;
-            if (type == eMsgType.Meausurements || type == eMsgType.MeasurementsAndBT)
+            if (type == eMsgType.MeasurementsAndBT)
             {
                 if (this.status == eDeviceAction.Arm)
                 {
                     if (SensorsProcessing.shouldAlarm(msg.pirValue, msg.thermValue))
                     {
+                        if(msg.idsBTScan.Length > 0)
+                        {
+                            foreach (String BTid in msg.idsBTScan)
+                            {
+                                if (this.isFamilyMember(BTid))
+                                {
+                                    triggerAction(eDeviceAction.Disarm);
+                                    return;
+                                }
+                            }
+                        }
                         triggerAction(eDeviceAction.Alarm);
                     }
 
                 }
             }
-            if (type == eMsgType.BTscan || type == eMsgType.MeasurementsAndBT)
-            {
-                if (this.status == eDeviceAction.Arm)
-                {
-                    foreach (String BTid in msg.idsBTScan)
-                    {
-                        if (this.isFamilyMember(BTid))
-                        {
-                            member = true;
-                            break;
-                        }
-                    }
-                    if (!member)
-                    {
-                        triggerAction(eDeviceAction.Alarm);
-                    }
-                    else
-                    {
-                        triggerAction(eDeviceAction.Disarm);
-                    }
-                }
-            }
+            
         }
         #endregion
     }

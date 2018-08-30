@@ -90,7 +90,7 @@ namespace ThermAlarm.Common
         public float[] thermValue
         {
             get => Array.ConvertAll(thermValueInternal.Split(',', StringSplitOptions.RemoveEmptyEntries), float.Parse);
-            set => thermValueInternal = string.Join(',', value);
+            set => thermValueInternal = value == null ? "" : string.Join(',', value);
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -100,7 +100,7 @@ namespace ThermAlarm.Common
         public string[] idsBTScan
         {
             get => idsBTScanInternal.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            set => idsBTScanInternal = string.Join(',', value);
+            set => idsBTScanInternal = value == null ? "" : string.Join(',', value);
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]

@@ -39,14 +39,19 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult AddPerson()
         {
             ViewData["Message"] = "Add Person page.";
+            TempData["MemberAdded"] = "";
+            TempData.Keep();
             return View();
         }
         [HttpPost("addPerson")]
-        public IActionResult AddPerson(Person p)
+        public IActionResult addPerson(Person p)
         {
             this.alarm.addFamilyMember(p);
+            TempData["MemberAdded"] = "Member added successfully!";
+            TempData.Keep();
             return View();
         }
+
 
         public IActionResult Error()
         {
@@ -57,7 +62,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Arm()
         {
             TempData["Color"] = "#F9E79F";
-            TempData["visibility"] = "hidden";
+            TempData["AlarmMsg"] = "";
             TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Arm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
@@ -68,7 +73,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Disarm()
         {
             TempData["Color"] = "#ABEBC6";
-            TempData["visibility"] = "hidden";
+            TempData["AlarmMsg"] = "";
             TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Disarm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
@@ -78,11 +83,21 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Buzz()
         {
-            TempData["Color"] = "red";
-            TempData["visibility"] = "";
-            TempData.Keep();
-            //this.alarm.triggerAction(eDeviceAction.Alarm);
-            dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
+            if(alarm.status == eDeviceAction.Alarm)
+            {
+                TempData["Color"] = "#FF4529";
+                TempData["AlarmMsg"] = "Alarm!!!  BUZZZ";
+                TempData.Keep();
+                dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
+            }
+            else if(alarm.status == eDeviceAction.Arm)
+            {
+                return RedirectToAction("Arm");
+            }
+            else //disarm
+            {
+                return RedirectToAction("Disarm");
+            }
             return Redirect("/");
         }
 

@@ -24,6 +24,10 @@
         <input asp-for="BTid" />
         <br />
         <br />
-        <input type="submit" value="Add member" />
+        <input type="submit" name="Add Member" value="AddMember" />
+        <br />
+        <label id="memberAdded"><font color="green"> @TempData["MemberAdded"]</font></label>
     </form>
 </div>
+
+

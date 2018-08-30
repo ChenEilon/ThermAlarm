@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ThermAlarm.WebApp.Models;
 using ThermAlarm.Common;
 using ThermAlarm.WebApp.Services;
+using System.Net.Http;
 
 namespace ThermAlarm.WebApp.Controllers
 {
@@ -31,7 +32,6 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
@@ -39,7 +39,6 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult AddPerson()
         {
             ViewData["Message"] = "Add Person page.";
-
             return View();
         }
         [HttpPost("addPerson")]
@@ -58,6 +57,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Arm()
         {
             TempData["Color"] = "#F9E79F";
+            TempData["visibility"] = "hidden";
             TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Arm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
@@ -68,8 +68,8 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Disarm()
         {
             TempData["Color"] = "#ABEBC6";
+            TempData["visibility"] = "hidden";
             TempData.Keep();
-            ViewData["visibility"] = "hidden";
             this.alarm.triggerAction(eDeviceAction.Disarm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
             return Redirect("/");
@@ -79,9 +79,9 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Buzz()
         {
             TempData["Color"] = "red";
+            TempData["visibility"] = "";
             TempData.Keep();
-            ViewData["visibility"] = "";
-            this.alarm.triggerAction(eDeviceAction.Alarm);
+            //this.alarm.triggerAction(eDeviceAction.Alarm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
             return Redirect("/");
         }

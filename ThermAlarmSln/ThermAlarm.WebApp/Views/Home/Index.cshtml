@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ViewData["visibility"] = "hidden";
-
+    
 }
 
 
@@ -15,7 +14,7 @@
     <button id="DisarmBtn" class="btn btn-success">Disarm</button>
     <br />
     <br />
-    <label id="Alarm"> <font color="#7B241C">Alarm!!!  BUZZZZ</font></label>
+    <label id="Alarm" @TempData["visibility"]> <font color="#7B241C">Alarm!!!  BUZZZZ</font></label>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
@@ -28,6 +27,7 @@
                 document.location = '@Url.Action("Disarm","Home")';
             });
     </script>
+    <script>function alarmTry() { document.body.style.backgroundColor = 'red'; }</script>
 </div>
 
 

@@ -7,13 +7,13 @@ using System.Collections;
 using ThermAlarm.Common;
 using ThermAlarm.WebApp.Services;
 
+
 namespace ThermAlarm.WebApp.Models
 {
     public sealed class Alarm
     {
         private IDatabaseManager dbManager;
 
-        /*singelton pattern*/
         public eDeviceAction status { get; set; }
         private Hashtable family;    //hashtable to query fast at runtime (ALARM)
         public ServiceClient serviceClient;
@@ -63,6 +63,7 @@ namespace ThermAlarm.WebApp.Models
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
             this.dbManager.LogAlarmActionInDB(act);
             //TODO - call website action function?
+            
         }
 
         public void msgReceived_handler(MsgObj msg)

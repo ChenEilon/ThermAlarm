@@ -79,6 +79,9 @@ namespace ThermAlarm.Common
         [Key]
         public int Id { get; set; }
 
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreateTime { get; set; }
+
         public eMsgType mType { get; set; }
 
         public int pirValue { get; set; }
@@ -106,18 +109,18 @@ namespace ThermAlarm.Common
 
     public class AlarmAction
     {
-        public AlarmAction(eDeviceAction act)
+        public AlarmAction(eDeviceAction type)
         {
-            this.Type = act;
+            this.Type = type;
         }
 
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public eDeviceAction Type { get; set; }
-
         [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreateTime { get; set; }
+
+        [Required]
+        public eDeviceAction Type { get; set; }
     }
 }

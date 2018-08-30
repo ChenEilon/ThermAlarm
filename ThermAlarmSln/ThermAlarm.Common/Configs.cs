@@ -15,7 +15,7 @@ namespace ThermAlarm.Common
         public static string STORAGE_CONTAINER_NAME = "msg-processor-host";
         //event processor - web app communiction
         public static string GAL_LOCAL_WEB_API = @"http://localhost:60768";
-        public static string AZURE_WEB_API = "";
+        public static string AZURE_WEB_API = @"http://thermalarmwebapp.azurewebsites.net";
 
     }
 }

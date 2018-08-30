@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ThermAlarm.WebApp.Models;
 using ThermAlarm.Common;
 using ThermAlarm.WebApp.Services;
+using System.Net.Http;
 
 namespace ThermAlarm.WebApp.Controllers
 {
@@ -31,7 +32,6 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
@@ -39,15 +39,19 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult AddPerson()
         {
             ViewData["Message"] = "Add Person page.";
-
+            TempData["MemberAdded"] = "";
+            TempData.Keep();
             return View();
         }
         [HttpPost("addPerson")]
-        public IActionResult AddPerson(Person p)
+        public IActionResult addPerson(Person p)
         {
             this.alarm.addFamilyMember(p);
+            TempData["MemberAdded"] = "Member added successfully!";
+            TempData.Keep();
             return View();
         }
+
 
         public IActionResult Error()
         {
@@ -58,6 +62,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Arm()
         {
             TempData["Color"] = "#F9E79F";
+            TempData["AlarmMsg"] = "";
             TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Arm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
@@ -68,8 +73,8 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult Disarm()
         {
             TempData["Color"] = "#ABEBC6";
+            TempData["AlarmMsg"] = "";
             TempData.Keep();
-            ViewData["visibility"] = "hidden";
             this.alarm.triggerAction(eDeviceAction.Disarm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
             return Redirect("/");
@@ -78,11 +83,21 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Buzz()
         {
-            TempData["Color"] = "red";
-            TempData.Keep();
-            ViewData["visibility"] = "";
-            this.alarm.triggerAction(eDeviceAction.Alarm);
-            dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
+            if(alarm.status == eDeviceAction.Alarm)
+            {
+                TempData["Color"] = "#FF4529";
+                TempData["AlarmMsg"] = "Alarm!!!  BUZZZ";
+                TempData.Keep();
+                dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
+            }
+            else if(alarm.status == eDeviceAction.Arm)
+            {
+                return RedirectToAction("Arm");
+            }
+            else //disarm
+            {
+                return RedirectToAction("Disarm");
+            }
             return Redirect("/");
         }
 

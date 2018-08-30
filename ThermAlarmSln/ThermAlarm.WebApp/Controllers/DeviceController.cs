@@ -73,6 +73,7 @@ namespace ThermAlarm.WebApp.Controllers
         {
             /*This function calls the action ALARM on the device.
              The function does not get a feedback*/
+            this.myAlarm.status = eDeviceAction.Alarm;
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Alarm, serviceClient).Wait();
             return Ok("ALARM!! Command was sent to Device Device! BUZZZZZZ"); // TODO - change to logger
         }

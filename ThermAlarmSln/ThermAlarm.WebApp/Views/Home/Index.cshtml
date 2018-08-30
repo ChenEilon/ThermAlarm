@@ -1,12 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ViewData["visibility"] = "hidden";
-
+    
 }
 
 
 <h1> Alarm main page!</h1>
-<p>Color: @TempData["Color"]</p>
+
 <script>document.body.style.backgroundColor = '@TempData["Color"]';</script>
 <div id="interface">
     <button id="ArmBtn" class="btn btn-success">Arm</button>
@@ -15,7 +14,10 @@
     <button id="DisarmBtn" class="btn btn-success">Disarm</button>
     <br />
     <br />
-    <label id="Alarm"> <font color="#7B241C">Alarm!!!  BUZZZZ</font></label>
+    <button id="IsAlarmBtn" class="btn btn-success">Is Alarm?</button>
+    <br />
+    <br />
+    <label id="Alarm"> <font color="#7B241C">@TempData["AlarmMsg"]</font></label>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
@@ -26,6 +28,11 @@
     <script>
             $('#DisarmBtn').click(function () {
                 document.location = '@Url.Action("Disarm","Home")';
+            });
+    </script>
+    <script>
+        $('#IsAlarmBtn').click(function () {
+                document.location = '@Url.Action("Buzz","Home")';
             });
     </script>
 </div>

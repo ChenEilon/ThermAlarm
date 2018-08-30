@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.Azure.Devices;
 using Newtonsoft.Json;
+using ThermAlarm.WebApp.Services;
 
 namespace ThermAlarm.WebApp.Controllers
 {
@@ -17,18 +18,20 @@ namespace ThermAlarm.WebApp.Controllers
     [Route("[Controller]/[action]")]
     public class DeviceController : Controller
     {
+        private IDatabaseManager dbManager;
         ServiceClient serviceClient;
         RegistryManager registryManager;
         Alarm myAlarm;
 
-        public DeviceController()
+        public DeviceController(IDatabaseManager dbManager)
         {
+            this.dbManager = dbManager;
             //init DeviceMgr
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             registryManager = RegistryManager.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
             //DeviceMgr.ReceiveFeedback(serviceClient);
-            this.myAlarm = Alarm.GetInstance();
+            this.myAlarm = Alarm.GetInstance(dbManager);
         }
 
         [HttpPost]

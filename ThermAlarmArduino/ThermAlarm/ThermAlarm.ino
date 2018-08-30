@@ -99,6 +99,7 @@ void initTime()
 void initHW(){
   pinMode(PIR_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
 
   Wire.begin();
   grideye.begin();

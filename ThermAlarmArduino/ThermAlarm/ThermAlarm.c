@@ -31,7 +31,7 @@ EXECUTE_COMMAND_RESULT Arm(mThermAlarm* device){
 EXECUTE_COMMAND_RESULT Disarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  DISARMED;
-  digitalWrite(16, LOW);
+  digitalWrite(BUZZER_PIN, LOW);
   LogInfo("Disarm!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }
@@ -39,7 +39,7 @@ EXECUTE_COMMAND_RESULT Disarm(mThermAlarm* device){
 EXECUTE_COMMAND_RESULT Alarm(mThermAlarm* device){
   //(void)device;
   device->AlarmStatus =  ALARM;
-  digitalWrite(16, HIGH);
+  digitalWrite(BUZZER_PIN, HIGH);
   LogInfo("BUZZZ!!!!!!!"); //DEBUG
   return EXECUTE_COMMAND_SUCCESS;
 }

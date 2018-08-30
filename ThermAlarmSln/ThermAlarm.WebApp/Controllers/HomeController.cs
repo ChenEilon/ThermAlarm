@@ -46,8 +46,7 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpPost("addPerson")]
         public IActionResult AddPerson(Person p)
         {
-            //databaseManager.AddPersonToFamily(p);
-            //TODO enable...
+            this.alarm.addFamilyMember(p);
             return View();
         }
 
@@ -62,6 +61,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData["Color"] = "#F9E79F";
             TempData.Keep();
             this.alarm.triggerAction(eDeviceAction.Arm);
+            dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
             return Redirect("/");
         }
 
@@ -72,6 +72,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData.Keep();
             ViewData["visibility"] = "hidden";
             this.alarm.triggerAction(eDeviceAction.Disarm);
+            dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
             return Redirect("/");
         }
 
@@ -82,6 +83,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData.Keep();
             ViewData["visibility"] = "";
             this.alarm.triggerAction(eDeviceAction.Alarm);
+            dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
             return Redirect("/");
         }
 

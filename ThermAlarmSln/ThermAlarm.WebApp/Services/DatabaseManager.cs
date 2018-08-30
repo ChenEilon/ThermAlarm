@@ -55,5 +55,12 @@ namespace ThermAlarm.WebApp.Services
         }
 
         #endregion
+
+        #region Alarm Methods
+        public void LogAlarmActionInDB(eDeviceAction act)
+        {
+            //TODO - Log this. make table....
+        }
+        #endregion
     }
 }

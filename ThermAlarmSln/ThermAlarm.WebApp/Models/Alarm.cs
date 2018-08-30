@@ -15,7 +15,7 @@ namespace ThermAlarm.WebApp.Models
 
         /*singelton pattern*/
         public eDeviceAction status { get; set; }
-        private Hashtable family;
+        private Hashtable family;    //hashtable to query fast at runtime (ALARM)
         public ServiceClient serviceClient;
 
         // A private static instance of the same class
@@ -26,7 +26,14 @@ namespace ThermAlarm.WebApp.Models
         {
             this.dbManager = dbManager;
             this.status = eDeviceAction.Disarm;
-            this.family = new Hashtable(); //TODO - add database read from DB, if family exist, return hashtable of it
+            if(dbManager.IsFamily())
+            {
+                this.family = dbManager.GetFamily();
+            }
+            else
+            {
+                this.family = new Hashtable();
+            }
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //MsgReceivedEvent.MsgReceived += new msgReceivedHandler(msgReceived_handler);
         }
@@ -44,17 +51,17 @@ namespace ThermAlarm.WebApp.Models
 
 
         #region Family Methods
-        //TODO - add database calls.. family should be held as hashtable in runtime for making BT id query fast (ALARM is at runtime)
+        
         public void addFamilyMember(Person p)
         {
             this.family.Add(p.BTid, p);
-            //DatabaseMgr.AddPersonToFamily(p);
+            this.dbManager.AddPersonToFamily(p);
         }
 
         public void removeFamilyMember(Person p)
         {
             this.family.Remove(p.BTid);
-            //DatabaseMgr.RemovePersonFromFamily(p);
+            this.dbManager.RemovePersonFromFamily(p);
         }
 
         public bool isFamilyMember(String BTid)
@@ -69,13 +76,12 @@ namespace ThermAlarm.WebApp.Models
         {
             this.status = act;
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, act, serviceClient).Wait();
-            //TODO - call DB here
+            this.dbManager.LogAlarmActionInDB(act);
             //TODO - call website action function?
         }
 
         public void msgReceived_handler(MsgObj msg)
         {
-            //1. check msg type
             //TODO - figure out what if measurments msg before known bt - should alarm? activly scan? 
             eMsgType type = msg.mType;
             bool member = false;
@@ -112,7 +118,6 @@ namespace ThermAlarm.WebApp.Models
                     }
                 }
             }
-            //TODO - should log be here and nor in event processor?
             #endregion
         }
     }

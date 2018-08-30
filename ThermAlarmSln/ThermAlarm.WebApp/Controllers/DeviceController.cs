@@ -40,6 +40,7 @@ namespace ThermAlarm.WebApp.Controllers
             if(payload!=null)
             {
                 MsgObj msg = JsonConvert.DeserializeObject<MsgObj>(payload);
+                dbManager.LogInDB(msg);
                 myAlarm.msgReceived_handler(msg);
                 return Ok("Msg transfered..."); // TODO - change to logger
             }

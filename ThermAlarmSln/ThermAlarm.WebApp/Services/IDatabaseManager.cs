@@ -23,5 +23,9 @@ namespace ThermAlarm.WebApp.Services
         void LogInDB(MsgObj msg);
 
         #endregion
+
+        #region Alarm Methods
+        void LogAlarmActionInDB(eDeviceAction act);
+        #endregion
     }
 }

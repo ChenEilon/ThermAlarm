@@ -11,16 +11,10 @@ using System.Net.Http;
 
 namespace ThermAlarm.WebApp.Controllers
 {
-
-    public class HomeController : Controller
+    public class HomeController : AlarmControllerBase
     {
-        private IDatabaseManager dbManager;
-        public Alarm alarm;
-
-        public HomeController(IDatabaseManager dbManager, Alarm alarm)
+        public HomeController(IDatabaseManager dbManager, Alarm alarm) : base(dbManager, alarm)
         {
-            this.dbManager = dbManager;
-            this.alarm = alarm;
         }
 
         public IActionResult Index()
@@ -46,7 +40,7 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpPost("addPerson")]
         public IActionResult addPerson(Person p)
         {
-            this.alarm.addFamilyMember(p);
+            this.addFamilyMember(p);
             TempData["MemberAdded"] = "Member added successfully!";
             TempData.Keep();
             return View();
@@ -64,7 +58,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData["Color"] = "#F9E79F";
             TempData["AlarmMsg"] = "";
             TempData.Keep();
-            this.alarm.triggerAction(eDeviceAction.Arm);
+            this.triggerAction(eDeviceAction.Arm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
             return Redirect("/");
         }
@@ -75,7 +69,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData["Color"] = "#ABEBC6";
             TempData["AlarmMsg"] = "";
             TempData.Keep();
-            this.alarm.triggerAction(eDeviceAction.Disarm);
+            this.triggerAction(eDeviceAction.Disarm);
             dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
             return Redirect("/");
         }

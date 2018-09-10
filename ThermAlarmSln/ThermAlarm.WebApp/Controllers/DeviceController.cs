@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ThermAlarm.WebApp.Models;
 using ThermAlarm.Common;
 using System.Text;
 using System.Threading;
@@ -16,22 +15,18 @@ namespace ThermAlarm.WebApp.Controllers
 {
     //[Produces("application/json")]
     [Route("[Controller]/[action]")]
-    public class DeviceController : Controller
+    public class DeviceController : AlarmControllerBase
     {
-        private IDatabaseManager dbManager;
         ServiceClient serviceClient;
         RegistryManager registryManager;
-        Alarm myAlarm;
 
-        public DeviceController(IDatabaseManager dbManager, Alarm alarm)
+        public DeviceController(IDatabaseManager dbManager, Alarm alarm) : base(dbManager, alarm)
         {
-            this.dbManager = dbManager;
             //init DeviceMgr
             serviceClient = ServiceClient.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             registryManager = RegistryManager.CreateFromConnectionString(Configs.SERVICE_CONNECTION_STRING);
             //var feedbackTask = DeviceMgr.ReceiveFeedback(serviceClient);
             //DeviceMgr.ReceiveFeedback(serviceClient);
-            this.myAlarm = alarm;
         }
 
         [HttpPost]
@@ -41,7 +36,7 @@ namespace ThermAlarm.WebApp.Controllers
             {
                 MsgObj msg = JsonConvert.DeserializeObject<MsgObj>(payload);
                 dbManager.LogInDB(msg);
-                myAlarm.msgReceived_handler(msg);
+                alarm.msgReceived_handler(msg);
                 return Ok("Msg transfered..."); // TODO - change to logger
             }
             return Ok("Payload null.");
@@ -73,10 +68,11 @@ namespace ThermAlarm.WebApp.Controllers
         {
             /*This function calls the action ALARM on the device.
              The function does not get a feedback*/
-            this.myAlarm.status = eDeviceAction.Alarm;
+            this.alarm.status = eDeviceAction.Alarm;
             DeviceMgr.CallDeviceAction(Configs.DEVICE_NAME, eDeviceAction.Alarm, serviceClient).Wait();
             return Ok("ALARM!! Command was sent to Device Device! BUZZZZZZ"); // TODO - change to logger
         }
+
         #endregion
     }
 }

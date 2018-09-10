@@ -53,6 +53,8 @@ namespace ThermAlarm.Common
 
         [Required]
         public string BTid { get; set; }
+
+        public DateTime LastSeen { get; set; }
     }
 
     public class deviceAction

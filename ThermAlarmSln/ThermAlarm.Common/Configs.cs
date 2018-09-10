@@ -16,6 +16,8 @@ namespace ThermAlarm.Common
         //event processor - web app communiction
         public static string GAL_LOCAL_WEB_API = @"http://localhost:60768";
         public static string AZURE_WEB_API = @"http://thermalarmwebapp.azurewebsites.net";
-
+        //alarm thresholds
+        public static float TEMP_THRESH = 27;
+        public static int PIXEL_THRESH = 20;
     }
 }

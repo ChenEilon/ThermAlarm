@@ -45,6 +45,11 @@ namespace ThermAlarm.WebApp.Services
             context.SaveChanges();
         }
 
+        public Person[] FindPersonByEmail(String email)
+        {
+            return context.Person.Where(p => p.email == email).ToArray();
+        }
+
         #endregion
 
         #region Msg Methods

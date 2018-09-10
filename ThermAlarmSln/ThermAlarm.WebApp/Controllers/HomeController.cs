@@ -37,6 +37,7 @@ namespace ThermAlarm.WebApp.Controllers
             TempData.Keep();
             return View();
         }
+
         [HttpPost("addPerson")]
         public IActionResult addPerson(Person p)
         {
@@ -46,6 +47,24 @@ namespace ThermAlarm.WebApp.Controllers
             return View();
         }
 
+        [HttpGet("removePerson")]
+        public IActionResult RemovePerson()
+        {
+            ViewData["Message"] = "Remove Person page.";
+            TempData["MemberAdded"] = "";
+            TempData.Keep();
+            return View();
+        }
+
+        [HttpPost("removePerson")]
+        public IActionResult removePerson(Person p)
+        {
+            foreach (Person person in dbManager.FindPersonByEmail(p.email))
+                this.removeFamilyMember(person);
+            TempData["MemberRemoved"] = "Member removed successfully!";
+            TempData.Keep();
+            return View();
+        }
 
         public IActionResult Error()
         {

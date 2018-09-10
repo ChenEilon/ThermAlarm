@@ -15,6 +15,7 @@ namespace ThermAlarm.WebApp.Services
         Hashtable GetFamily();
         void AddPersonToFamily(Person p);
         void RemovePersonFromFamily(Person p);
+        Person[] FindPersonByEmail(String email);
 
         #endregion
 

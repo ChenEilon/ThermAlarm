@@ -14,10 +14,10 @@ namespace ThermAlarm.Common
             int countWarm = 0;
             foreach (int i in thermValues)
             {
-                if (i > 30)
+                if (i > Configs.TEMP_THRESH)
                     countWarm++;
             }
-            return (countWarm > 20);
+            return (countWarm > Configs.PIXEL_THRESH);
         }
 
         public static bool shouldAlarm(int pirValue, float[] thermValues)

@@ -1,0 +1,21 @@
+﻿@using ThermAlarm.Common
+@model Person
+@{
+    ViewData["Title"] = "Remove Person";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div id="removePersonForm">
+    <form method="post">
+        <label asp-for="email">Email:</label>
+        <br />
+        <input asp-for="email" />
+        <br />
+        <br />
+        <input type="submit" name="Remove Member" value="RemoveMember" />
+        <br />
+        <label id="memberRemoved"><font color="green"> @TempData["MemberRemoved"]</font></label>
+    </form>
+</div>
+
+

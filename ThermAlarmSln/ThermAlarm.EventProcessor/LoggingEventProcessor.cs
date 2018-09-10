@@ -35,8 +35,8 @@ namespace ThermAlarm.EventProcessor
             }
 
             //MsgReceivedEvent.OnMsgReceived(msg); // Raise event msgReceived
-            //GetAsync(Configs.GAL_LOCAL_WEB_API + @"/Device/msg_handler").Wait(); // try call controller
-            Post(Configs.GAL_LOCAL_WEB_API + @"/Device/msg_handler", "="+payload, "application/x-www-form-urlencoded");
+            //GetAsync(Configs.AZURE_WEB_API + @"/Device/msg_handler").Wait(); // try call controller
+            Post(Configs.AZURE_WEB_API + @"/Device/msg_handler", "="+payload, "application/x-www-form-urlencoded");
         }
 
         

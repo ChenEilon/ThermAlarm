@@ -100,9 +100,8 @@ namespace ThermAlarm.WebApp.Services
                 {
                     autoRearmTokenSource.Cancel();
                 }
-                finally
+                catch
                 {
-                    autoRearmTask.Wait();
                 }
         }
 

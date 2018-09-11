@@ -25,7 +25,6 @@ namespace ThermAlarm.WebApp.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
             return View();
         }
 
@@ -51,7 +50,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult RemovePerson()
         {
             ViewData["Message"] = "Remove Person page.";
-            TempData["MemberAdded"] = "";
+            TempData["MemberRemoved"] = "";
             TempData.Keep();
             return View();
         }

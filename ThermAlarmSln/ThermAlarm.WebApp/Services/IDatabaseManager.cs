@@ -12,7 +12,8 @@ namespace ThermAlarm.WebApp.Services
         #region Family Methods
 
         bool IsFamily();
-        Hashtable GetFamily();
+        Dictionary<string, Person> GetFamily();
+        void UpdateFamily(Dictionary<string, Person> family);
         void AddPersonToFamily(Person p);
         void RemovePersonFromFamily(Person p);
         Person[] FindPersonByEmail(String email);

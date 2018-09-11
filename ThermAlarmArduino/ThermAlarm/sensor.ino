@@ -24,7 +24,7 @@ char* getBtData(char *buf, int buf_len) {
   int i = 0;
   char c;
   int state = 0;
-  while (btSerial.available() and i < buf_len - 1) {
+  while (btSerial.available() and i < buf_len) {
     c = btSerial.read();
     switch (state) {
       case 0:
@@ -45,7 +45,10 @@ char* getBtData(char *buf, int buf_len) {
         break;
     }
   }
-  buf[i] = '\0';
+  if (i)
+    buf[i-1] = '\0';
+  else
+    buf[0] = '\0';
   return buf;
 }
 

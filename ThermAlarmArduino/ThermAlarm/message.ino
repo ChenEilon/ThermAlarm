@@ -19,7 +19,7 @@ void readMessage(int messageId, char *payload) {
   root["pirValue"] = pirValue;
   JsonArray& thermValue = root.createNestedArray("thermValue");
   thermValue.copyFrom(thermData, THERMAL_ARRAY_SIZE);
-  root["idsBTScan"] = btData;
+  root["idsBTScanInternal"] = btData;
   
   root.printTo(payload, MESSAGE_MAX_LEN);
 }

@@ -17,21 +17,21 @@ namespace ThermAlarm.WebApp.Controllers
         {
             this.dbManager = dbManager;
             this.alarm = alarm;
-            this.alarm.initFamily(dbManager.GetFamily());
+            this.alarm.family = dbManager.GetFamily();
         }
 
         #region Family Methods
 
         protected void addFamilyMember(Person p)
         {
-            this.alarm.addFamilyMember(p);
-            this.dbManager.AddPersonToFamily(p);
+            alarm.addFamilyMember(p);
+            dbManager.AddPersonToFamily(p);
         }
 
         protected void removeFamilyMember(Person p)
         {
-            this.alarm.removeFamilyMember(p);
-            this.dbManager.RemovePersonFromFamily(p);
+            alarm.removeFamilyMember(p);
+            dbManager.RemovePersonFromFamily(p);
         }
 
         #endregion
@@ -40,8 +40,10 @@ namespace ThermAlarm.WebApp.Controllers
 
         protected void triggerAction(eDeviceAction act)
         {
-            this.alarm.triggerAction(act);
-            this.dbManager.LogAlarmActionInDB(act);
+            alarm.triggerAction(act);
+            dbManager.LogAlarmActionInDB(act);
+            if (act == eDeviceAction.Disarm)
+                dbManager.UpdateFamily(alarm.family);
         }
 
         #endregion

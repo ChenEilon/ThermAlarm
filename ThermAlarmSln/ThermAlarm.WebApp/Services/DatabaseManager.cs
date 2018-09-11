@@ -25,12 +25,18 @@ namespace ThermAlarm.WebApp.Services
             return context.Person.Count() > 0;
         }
 
-        public Hashtable GetFamily()
+        public Dictionary<string, Person> GetFamily()
         {
-            Hashtable family = new Hashtable();
-            foreach (Person p in context.Person)
+            Dictionary<string, Person> family = new Dictionary<string, Person>();
+            foreach (Person p in context.Person.AsNoTracking())
                 family.Add(p.BTid, p);
             return family;
+        }
+
+        public void UpdateFamily(Dictionary<string, Person> family)
+        {
+            context.Person.UpdateRange(family.Values.ToArray());
+            context.SaveChanges();
         }
 
         public void AddPersonToFamily(Person p)
@@ -47,7 +53,7 @@ namespace ThermAlarm.WebApp.Services
 
         public Person[] FindPersonByEmail(String email)
         {
-            return context.Person.Where(p => p.email == email).ToArray();
+            return context.Person.AsNoTracking().Where(p => p.email == email).ToArray();
         }
 
         #endregion

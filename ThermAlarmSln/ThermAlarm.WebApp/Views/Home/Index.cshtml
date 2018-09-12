@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    
 }
 
 
@@ -17,23 +16,23 @@
     <button id="IsAlarmBtn" class="btn btn-success">Is Alarm?</button>
     <br />
     <br />
-    <label id="Alarm"> <font color="#7B241C">@TempData["AlarmMsg"]</font></label>
+    <label id="Alarm"><font color="#7B241C">@TempData["AlarmMsg"]</font></label>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
-            $('#ArmBtn').click(function () {
-                document.location = '@Url.Action("Arm","Home")';
-            });
+        $('#ArmBtn').click(function () {
+            document.location = '@Url.Action("Arm", "Home")';
+        });
     </script>
     <script>
-            $('#DisarmBtn').click(function () {
-                document.location = '@Url.Action("Disarm","Home")';
-            });
+        $('#DisarmBtn').click(function () {
+            document.location = '@Url.Action("Disarm", "Home")';
+        });
     </script>
     <script>
         $('#IsAlarmBtn').click(function () {
-                document.location = '@Url.Action("Buzz","Home")';
-            });
+            document.location = '@Url.Action("Buzz", "Home")';
+        });
     </script>
 </div>
 

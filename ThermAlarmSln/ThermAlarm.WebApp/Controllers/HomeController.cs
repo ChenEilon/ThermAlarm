@@ -19,6 +19,21 @@ namespace ThermAlarm.WebApp.Controllers
 
         public IActionResult Index()
         {
+            switch (alarm.status)
+            {
+                case eDeviceAction.Arm:
+                    TempData["Color"] = "#F9E79F";
+                    TempData["AlarmMsg"] = "";
+                    break;
+                case eDeviceAction.Disarm:
+                    TempData["Color"] = "#ABEBC6";
+                    TempData["AlarmMsg"] = "";
+                    break;
+                case eDeviceAction.Alarm:
+                    TempData["Color"] = "#FF4529";
+                    TempData["AlarmMsg"] = "Alarm!!!  BUZZZ";
+                    break;
+            }
             TempData.Keep();
             return View();
         }
@@ -40,7 +55,7 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpPost("addPerson")]
         public IActionResult addPerson(Person p)
         {
-            this.addFamilyMember(p);
+            addFamilyMember(p);
             TempData["MemberAdded"] = "Member added successfully!";
             TempData.Keep();
             return View();
@@ -59,7 +74,7 @@ namespace ThermAlarm.WebApp.Controllers
         public IActionResult removePerson(Person p)
         {
             foreach (Person person in dbManager.FindPersonByEmail(p.email))
-                this.removeFamilyMember(person);
+                removeFamilyMember(person);
             TempData["MemberRemoved"] = "Member removed successfully!";
             TempData.Keep();
             return View();
@@ -73,47 +88,23 @@ namespace ThermAlarm.WebApp.Controllers
         [HttpGet]
         public IActionResult Arm()
         {
-            TempData["Color"] = "#F9E79F";
-            TempData["AlarmMsg"] = "";
-            TempData.Keep();
-            this.triggerAction(eDeviceAction.Arm);
-            dbManager.LogAlarmActionInDB(eDeviceAction.Arm);
+            triggerAction(eDeviceAction.Arm);
             return Redirect("/");
         }
 
         [HttpGet]
         public IActionResult Disarm()
         {
-            TempData["Color"] = "#ABEBC6";
-            TempData["AlarmMsg"] = "";
-            TempData.Keep();
-            this.triggerAction(eDeviceAction.Disarm);
-            dbManager.LogAlarmActionInDB(eDeviceAction.Disarm);
+            triggerAction(eDeviceAction.Disarm);
             return Redirect("/");
         }
 
         [HttpGet]
         public IActionResult Buzz()
         {
-            if(alarm.status == eDeviceAction.Alarm)
-            {
-                TempData["Color"] = "#FF4529";
-                TempData["AlarmMsg"] = "Alarm!!!  BUZZZ";
-                TempData.Keep();
+            if (alarm.status == eDeviceAction.Alarm)
                 dbManager.LogAlarmActionInDB(eDeviceAction.Alarm);
-            }
-            else if(alarm.status == eDeviceAction.Arm)
-            {
-                return RedirectToAction("Arm");
-            }
-            else //disarm
-            {
-                return RedirectToAction("Disarm");
-            }
             return Redirect("/");
         }
-
-        
     }
-
 }

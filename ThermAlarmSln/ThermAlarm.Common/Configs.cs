@@ -18,7 +18,7 @@ namespace ThermAlarm.Common
 
         #region Web Communication
 
-        public static string GAL_LOCAL_WEB_API = @"http://localhost:60768";
+        public static string LOCAL_WEB_API = @"http://localhost:60768";
         public static string AZURE_WEB_API = @"http://thermalarmwebapp.azurewebsites.net";
 
         #endregion
@@ -27,8 +27,8 @@ namespace ThermAlarm.Common
 
         #region Alarm
 
-        public static float TEMP_THRESH = 29;
-        public static int PIXEL_THRESH = 20;
+        public static float TEMP_THRESH = 28;
+        public static int PIXEL_THRESH = 10;
         public static int BT_FORGET_TIME = 5;    // in minutes
         public static int AUTO_REARM_TIME = 60;    // in seconds
 

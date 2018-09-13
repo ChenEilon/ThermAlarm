@@ -21,8 +21,8 @@
 /*************** WiFi & IOT setup *************/
 /**********************************************/
 
-#define WIFI_SSID            "EilonF1"
-#define WIFI_PASSWORD        "31273923127392"
+#define WIFI_SSID            "Free-TAU"
+#define WIFI_PASSWORD        "freetau"
 
 #define IOT_CONFIG_CONNECTION_STRING    "HostName=ThermAlarmIOTHub.azure-devices.net;DeviceId=thermAlarmDevice;SharedAccessKey=Iv5yW1T+t2GaptF/Cba2QT8us86N0oYK3D7e/r1e6sU="
 /* Choose the transport protocol*/
@@ -30,7 +30,7 @@
 // #define IOT_CONFIG_HTTP              // uncomment this line for HTTP
 
 #define MESSAGE_MAX_LEN 1024
-#define DEBUG_SEC 100
+#define DEBUG_SEC 250
 #define DEVICE_ID "thermAlarmDevice" //TODO - fill device id.
 
 /**********************************************/

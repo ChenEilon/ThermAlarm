@@ -21,8 +21,8 @@
 /*************** WiFi & IOT setup *************/
 /**********************************************/
 
-#define WIFI_SSID            "Free-TAU"
-#define WIFI_PASSWORD        "freetau"
+#define WIFI_SSID            "TAU-CS"
+#define WIFI_PASSWORD        "publictau"
 
 #define IOT_CONFIG_CONNECTION_STRING    "HostName=ThermAlarmIOTHub.azure-devices.net;DeviceId=thermAlarmDevice;SharedAccessKey=Iv5yW1T+t2GaptF/Cba2QT8us86N0oYK3D7e/r1e6sU="
 /* Choose the transport protocol*/
